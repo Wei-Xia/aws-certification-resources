@@ -159,3 +159,53 @@ The Well-Architected Framework identifies a set of general design principles to 
 `Spot Instances`
 
 Spot Instances are a cost-effective choice if you can be flexible about when your applications run and if you don't mind if your applications get interrupted. For example, Spot Instances are well-suited for data analysis, batch jobs, background processing, and optional tasks.
+
+20. You are trying to organize and import gigabytes of data into AWS that are currently structured in JSON-like, name-value documents. Which AWS service would best fit your needs?
+
+`DynamoDB`
+
+DynamoDB is AWS' NoSQL database offering. NoSQL databases are used for non-structured data that are typically stored in JSON-like, name-value documents.
+
+21. A company is currently using the Enterprise Support plan. They want quick and efficient guidance with their billing and account inquiries. Which of the following included services could assist them?
+
+`AWS Support Concierge`
+
+Included as part of the Enterprise Support plan, the Support Concierge Team are AWS billing and account experts that specialize in working with enterprise accounts. The Concierge team will quickly and efficiently assist you with your billing and account inquiries, and work with you to help implement billing and account best practices so that you can focus on running your business.
+
+Support Concierge service includes:
+
+- 24 x7 access to AWS billing and account inquires.
+
+- Guidance and best practices for billing allocation, reporting, consolidation of accounts, and root-level account security.
+
+- Access to Enterprise account specialists for payment inquiries, training on specific cost reporting, assistance with service limits, and facilitating bulk purchases.
+
+22. An organization has decided to reserve EC2 compute capacity for three years to get more discounts. Their application workloads are likely to change during this time period. What is the EC2 Reserved Instance (RI) type that allows them to change the attributes of the RI whenever they need?
+
+`Convertible RIs`
+
+Convertible RIs provide a discount (up to 54% off On-Demand) and the capability to change the attributes of the RI as long as the exchange results in the creation of Reserved Instances of equal or greater value. These attributes include instance family, instance type, platform, scope, and tenancy.
+
+23. The principle “design for failure and nothing will fail” is very important when designing your AWS Cloud architecture. Which of the following would help adhere to this principle? (Choose two)
+
+`Availability Zones and Elastic Load Balancer`
+
+Each AWS Region is a separate geographic area. Each AWS Region has multiple, isolated locations known as Availability Zones. When designing your AWS Cloud architecture, you should make sure that your system will continue to run even if failures happen. You can achieve this by deploying your AWS resources in multiple Availability zones. Availability zones are isolated from each other, therefore if one availability zone goes down, the other AZ’s will still be up and running and hence your application will be more fault tolerant. In addition to availability zones you can build a disaster recovery solution by deploying your AWS resources in other regions. If an entire region goes down you will still have resources in another region able to continue to provide a solution. Finally, you can use the Elastic Load Balancer to regularly perform health checks and distribute traffic only to the healthy instances.
+
+24. You are going to create snapshots from EBS volumes in another geographical location using the console. Where would you create the snapshots?
+
+`In another Region`
+
+Since you are going to create snapshots in another geographical location then you will create them in another AWS Region.
+
+25. One of the most important AWS best practices to follow is the cloud architecture principle of elasticity. How does following this principle improve your architecture’s design?
+
+`By automatically provisioning the required AWS resources based on changes in demand.`
+
+The concept of Elasticity involves the ability of a service to automatically scale its resources up or down based on changes in demand. For example, Amazon EC2 Autoscaling can help automate the process of adding or removing Amazon EC2 instances as demand increases or decreases.
+
+25. Which of the following allows you to carve out a portion of the AWS Cloud?
+
+`Amazon VPC`
+
+Amazon Virtual Private Cloud (Amazon VPC) enables you to launch AWS resources into a virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, with the benefits of using the scalable infrastructure of AWS.
