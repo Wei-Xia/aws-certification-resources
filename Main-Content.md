@@ -32,3 +32,6 @@
 - [AWS Key Management Service](https://aws.amazon.com/kms/)
 - [Amazon Cognito](https://aws.amazon.com/cognito/)
 - [Compare AWS Support Plans](https://aws.amazon.com/premiumsupport/plans/)
+- [Amazon ElastiCache](https://aws.amazon.com/elasticache/)
+- [AWS Artifact](https://aws.amazon.com/artifact/)
+- [AWS X-Ray](https://aws.amazon.com/xray/)
