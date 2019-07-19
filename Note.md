@@ -429,3 +429,19 @@ Data protection refers to protecting data while in-transit (as it travels to and
 - AWS Auto Scaling is free to use: AWS Auto Scaling is a service that can help you optimize your utilization and cost efficiencies when consuming AWS services so you only pay for the resources you actually need. When demand drops, AWS Auto Scaling will automatically remove any excess resource capacity so you avoid overspending.
 
 - AWS CloudFormation is available at no additional charge, and you pay only for the AWS resources needed to run your applications: AWS CloudFormation is a service that gives developers and businesses an easy way to create a collection of related AWS resources and provision them in an orderly and predictable fashion.
+
+55. What service helps you to aggregate log files from your EC2 instances?
+
+`CloudWatch Logs`
+
+You can use Amazon CloudWatch Logs to monitor, store, and access your log files from Amazon Elastic Compute Cloud (Amazon EC2) instances, AWS CloudTrail, Route 53, and other sources. You can then retrieve the associated log data from CloudWatch Logs.
+
+56. Select the services that can be used to build hybrid cloud architectures. (Choose two)
+
+`AWS Identity and Access Management and Amazon Virtual Private Cloud`
+
+In cloud computing, hybrid cloud refers to the use of both on-premises resources in addition to public cloud resources. A hybrid cloud enables an organization to migrate applications and data to the cloud, extend their datacenter capacity, utilize new cloud-native capabilities, move applications closer to customers, and create a backup and disaster recovery solution with cost-effective high availability. By working closely with enterprises, AWS has developed the industry’s broadest set of hybrid capabilities across storage, networking, security, application deployment, and management tools to make it easy for you to integrate the cloud as a seamless and secure extension of your existing investments.
+
+AWS Identity and Access Management (IAM) can grant your employees and applications access to the AWS Management Console and AWS service APIs using your existing identity systems. AWS IAM supports federation from corporate systems like Microsoft Active Directory, as well as external Web Identity Providers like Google and Facebook.
+
+Amazon Virtual Private Cloud (Amazon VPC) allows you to create a Hardware VPN connection between your corporate data center and your VPC to leverage the AWS Cloud as an extension of your corporate datacenter.
