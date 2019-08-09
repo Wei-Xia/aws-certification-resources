@@ -445,3 +445,201 @@ In cloud computing, hybrid cloud refers to the use of both on-premises resources
 AWS Identity and Access Management (IAM) can grant your employees and applications access to the AWS Management Console and AWS service APIs using your existing identity systems. AWS IAM supports federation from corporate systems like Microsoft Active Directory, as well as external Web Identity Providers like Google and Facebook.
 
 Amazon Virtual Private Cloud (Amazon VPC) allows you to create a Hardware VPN connection between your corporate data center and your VPC to leverage the AWS Cloud as an extension of your corporate datacenter.
+
+57. What are the benefits of using DynamoDB? (Choose two)
+
+`Automatic scaling to meet required throughput capacity and single-digit millisecond latency`
+
+Benefits of DynamoDB include:
+
+- Performance at scale: DynamoDB supports some of the world’s largest scale applications by providing consistent, single-digit millisecond response times at any scale. You can build applications with virtually unlimited throughput and storage.
+- Serverless: With DynamoDB, there are no servers to provision, patch, or manage and no software to install, maintain, or operate. DynamoDB automatically scales tables up and down to adjust for capacity and maintain performance.
+- Highly available:Availability and fault tolerance are built in, eliminating the need to architect your applications for these capabilities.
+
+58. Which of the following should you consider when creating a tagging strategy for your AWS resources? (Choose two)
+
+`Use as many tags as possible to help filter your resource easily AND Always use a case-sensitive format for tags`
+
+When creating a tagging strategy for AWS resources, make sure that it accurately represents organizationally relevant dimensions and adheres to the following tagging best practices:
+
+- Always use a standardized, case-sensitive format for tags, and implement it consistently across all resource types.
+
+- Consider tag dimensions that support the ability to manage resource access control, cost tracking, automation, and organization.
+
+- Implement automated tools to help manage resource tags.
+
+- Err on the side of using too many tags rather than too few tags.
+
+- Remember that it is easy to modify tags to accommodate changing business requirements, however consider the ramifications of future changes, especially in relation to tag-based access control, automation, or upstream billing reports.
+
+59. Which of the following support plans include the AWS Support Concierge Service?
+
+`Enterprise`
+
+Only the Enterprise plan includes the AWS Support Concierge Service.
+
+60. You want to take a snapshot of an EC2 Instance and create a new instance out of it. This snapshot is equivalent to:
+
+`AMI`
+
+An Amazon Machine Image (AMI) provides the information required to launch an instance, which is a virtual server in the cloud. You must specify an AMI when you launch an instance, and you can launch as many instances from the AMI as you need. You can also launch instances from as many different AMIs as you need.
+
+61. You have been asked to set up a database in AWS that will require frequent updates. You know that you will need a reasonable amount of storage space but are unsure of the best option. Which type of storage should be used by a database instance based on the above criteria?
+
+`Amazon EBS`
+
+Amazon EBS provides durable, block-level storage volumes that you can attach to a running Amazon EC2 instance. Amazon EBS volumes offer consistent and low-latency performance compared to other storage options. You can use EBS volumes as primary storage for data that requires frequent updates, such as the system drive for an instance or storage for a database application.
+
+62. Which AWS support plan would help provide general guidance when you request Architecture Support?
+
+`Developer`
+
+The developer support plan provides general guidance when you request Architecture Support.
+
+63. Which of the following are benefits of the AWS's Relational Database Service (RDS)? (Choose two)
+
+`Automated patches and backups, You can resize capacity accordingly`
+
+Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate, and scale a relational database in the cloud. It provides cost-efficient and resizable capacity while automating time-consuming administration tasks such as hardware provisioning, database setup, patching and backups. It frees you to focus on your applications so you can give them the fast performance, high availability, security and compatibility they need.
+
+64. What are design principles for performance efficiency in the cloud? (Choose two)
+
+`Use serverless architectures, Go global in minutes`
+
+There are five design principles for performance efficiency in the cloud:
+
+- Democratize advanced technologies: Technologies that are difficult to implement can become easier to consume by pushing that knowledge and complexity into the cloud vendor's domain. Rather than having your IT team learns how to host and run a new technology, they can simply consume it as a service. For example, NoSQL databases, media transcoding, and machine learning are all technologies that require expertise that is not evenly dispersed across the technical community. In the cloud, these technologies become services that your team can consume while focusing on product development rather than resource provisioning and management.
+
+- Go global in minutes: Easily deploy your system in multiple Regions around the world with just a few clicks. This allows you to provide lower latency and a better experience for your customers at minimal cost.
+
+- Use serverless architectures: In the cloud, serverless architectures remove the need for you to run and maintain servers to carry out traditional compute activities. For example, storage services can act as static websites, removing the need for web servers, and event services can host your code for you. This not only removes the operational burden of managing these servers, but also can lower transactional costs because these managed services operate at cloud scale.
+
+- Experiment more often: With virtual and automatable resources, you can quickly carry out comparative testing using different types of instances, storage, or configurations.
+
+- Mechanical sympathy: Use the technology approach that aligns best to what you are trying to achieve. For example, consider data access patterns when selecting database or storage approaches.
+
+65. What does AWS offer to secure your network? (Choose two)
+
+`Built-in firewall, Encrypt data in transit`
+
+AWS has a Built-in firewall that can be used to control traffic to your network.
+
+You can secure your network by encrypting your data in transit with TLS across all services.
+
+66. Which of the following is a benefit of running an application in multiple Availability Zones?
+
+`Increase the availability of your application`
+
+Placing instances that run your application in multiple Availability Zones improves the fault tolerance of your application. If one Availability Zone experiences an outage, traffic is routed to another Availability Zone, and this will increase the availability of your application.
+
+67. Which of the following allows you to create a new RDS instance? (Choose two)
+
+`AWS Management Console, AWS CloudFormation`
+
+The AWS Management Console lets you create a new RDS instance through a web-based user interface.
+
+You can also use the AWS CloudFormation service to create a new RDS instance using the CloudFormation template language.
+
+68. Which of the following statements best describes the AWS shared controls?
+
+`Controls which apply to both the infrastructure layer and customer layers`
+
+Shared Controls are controls which apply to both the infrastructure layer and customer layers, but in completely separate contexts or perspectives. In a shared control, AWS provides the requirements for the infrastructure and the customer must provide their own control implementation within their use of AWS services. Examples include:
+
+- Patch Management – AWS is responsible for patching and fixing flaws within the infrastructure, but customers are responsible for patching their guest OS and applications.
+
+- Configuration Management – AWS maintains the configuration of its infrastructure devices, but a customer is responsible for configuring their own guest operating systems, databases, and applications.
+
+- Awareness & Training - AWS trains AWS employees, but a customer must train their own employees.
+
+69. How can ELBs improve the fault tolerance of your application?
+
+`By ensuring that only healthy targets receive traffic`
+
+ELB continuously performs health checks on the registered targets (such as Amazon EC2 instances) and only routes traffic to the healthy ones. This increases the fault tolerance of your application and makes it highly available.
+
+70. Which of the following AWS services can help you perform security analysis and compliance auditing? (Choose two)
+
+`AWS Config, AWS Inspector`
+
+With AWS Config, you can discover existing and deleted AWS resources, determine your overall compliance against rules, and dive into configuration details of a resource at any point in time. These capabilities enable compliance auditing, security analysis, resource change tracking, and troubleshooting.
+
+Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS. Amazon Inspector automatically assesses applications for exposure, vulnerabilities, and deviations from best practices. This allows you to make security testing a more regular occurrence as part of development and IT operations.
+
+Additional information:
+
+One of the most important services that can help you perform security analysis and compliance auditing is AWS CloudTrail. AWS CloudTrail simplifies your compliance audits by automatically recording and storing event logs for actions made within your AWS account. With AWS CloudTrail, you can discover and troubleshoot security and operational issues by capturing a comprehensive history of changes that occurred in your AWS account within a specified period of time.
+
+71. How does AWS Lambda work?
+
+`Just upload your code and watch it run`
+
+AWS Lambda lets you run code without provisioning or managing servers. You pay only for the compute time you consume - there is no charge when your code is not running. With Lambda, you can run code for virtually any type of application or backend service - all with zero administration. Just upload your code and Lambda takes care of everything required to run and scale your code with high availability. You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app.
+
+72. You want to quickly deploy your .NET application on the AWS Cloud. Which of the following AWS services can best help you?
+
+`AWS Elastic Beanstalk`
+
+AWS Elastic Beanstalk is an easy-to-use service for deploying and scaling web applications and services developed with Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker on familiar servers such as Apache, Nginx, Passenger, and IIS.
+
+73. Which of the following are customer responsibilities when using EC2? (Choose two)
+
+`Install and configure third-party software, Protect sensitive data`
+
+Amazon EC2 requires the customer to perform all of the necessary security configuration and management tasks. When customers deploy Amazon EC2 instances, they are responsible for management of custom Amazon Machine Images, management of the guest operating systems (including updates and security patches), securing application access and data, installing and configuring third-party applications or utilities, and the configuration of the AWS-provided firewall (called a security group) on each instance.
+
+74. What are AWS’ recommendations regarding root access keys?
+
+`Delete them`
+
+AWS recommends that you delete your root access keys because you can’t restrict permissions for the root user credentials. If you want to manage services that require administrative access create an IAM user, grant administrator access to that user, then use those credentials to interact with AWS.
+
+75. Which of the following services help reduce the complexity and time needed to plan your application migration to the AWS Cloud?
+
+`AWS Application Discovery Service`
+
+AWS Application Discovery Service helps systems integrators quickly and reliably plan application migration projects by automatically identifying applications running in on-premises data centers, their associated dependencies, and their performance profiles. Planning data center migrations can involve thousands of workloads that are often deeply interdependent. Application discovery and dependency mapping are important early first steps in the migration process, but these tasks are difficult to perform at scale due to the lack of automated tools.AWS Application Discovery Service automatically collects configuration and usage data from servers, storage, and networking equipment to develop a list of applications, how they perform, and how they are interdependent. This information is retained in encrypted format in an AWS Application Discovery Service database, which you can export as a CSV or XML file into your preferred visualization tool or cloud migration solution to help reduce the complexity and time in planning your cloud migration.
+
+76. For managed services like Amazon DynamoDB, what are the security-related tasks that AWS is responsible for? (Choose two)
+
+`Install antivirus software, Disaster recovery`
+
+AWS has increased responsibilities for its managed services. Examples of managed services include Amazon DynamoDB, Amazon RDS, Amazon Redshift, Amazon Elastic MapReduce, and Amazon WorkSpaces. These services provide the scalability and flexibility of cloud-based resources with less operational overhead because AWS handle basic security tasks like guest operating system (OS) and database patching, installing antivirus software, and disaster recovery. For most managed services, you only configure logical access controls and protect account credentials, while maintaining control and responsibility of any personal data.
+
+77. You need to set up a security certificate for a client's eCommerce website in order to use the HTTPS protocol. Which of the following AWS services do you need to access in order to manage your SSL server certificate? (Choose two)
+
+`AWS Identity & Access Management, AWS ACM`
+
+To enable HTTPS connections to your website or application in AWS, you need an SSL/TLS server certificate. You can use a server certificate provided by AWS Certificate Manager (ACM) or one that you obtained from an external provider. You can use ACM or IAM to store and deploy server certificates. Use IAM as a certificate manager only when you must support HTTPS connections in a region that is not supported by ACM. IAM supports deploying server certificates in all regions, but you must obtain your certificate from an external provider for use with AWS. Amazon Route 53 is used to register domain names or use your own domain name to route your end users to Internet applications. Route 53 is not responsible for creating SSL certifications.
+
+78. Big Cloud Jumbo Corp is beginning to explore migrating their entire on-premises data center to AWS. They are very concerned about how much it will cost once their entire IT infrastructure is running on AWS. What tool would you recommend they use to perform a cost-benefit analysis of moving to the AWS Cloud?
+
+`AWS TCO (Total Cost of Ownership) Calculator`
+
+The AWS TCO (Total Cost of Ownership) Calculator is a free tool provided by AWS that allows you to compare your current on-premises cost vs. estimated AWS cost.
+
+79. Doodle, Inc. has a web application that ultimately stores billions of images and videos. All told, there is almost an exabyte of data stored in Doodle’s system. Which of the following AWS services can best transfer the data to AWS?
+
+`Snowmobile`
+
+AWS Snowmobile is an Exabyte-scale data transfer service used to move extremely large amounts of data to AWS. You can transfer up to 100PB per Snowmobile, a 45-foot long ruggedized shipping container, pulled by a semi-trailer truck. Snowmobile makes it easy to move massive volumes of data to the cloud, including video libraries, image repositories, or even a complete data center migration. At exabyte scale, transferring data with Snowmobile is more secure, fast and cost effective.
+
+80. Which of the following are use cases for Amazon S3? (Choose two)
+
+`Hosting static websites, A media store for the CloudFront service`
+
+You can host a static website on Amazon Simple Storage Service (Amazon S3). On a static website, individual webpages include static content. They might also contain client-side scripts. To host a static website, you configure an Amazon S3 bucket for website hosting, allow public read access, and then upload your website content to the bucket. By contrast, a dynamic website relies on server-side processing, including server-side scripts such as PHP, JSP, or ASP.NET. Amazon S3 does not support server-side scripting. Amazon Web Services (AWS) also has resources for hosting dynamic websites such as Amazon EC2.
+
+Amazon S3 is an excellent storage facility for your media assets. It is infinitely scalable, has built-in redundancy, and is available to you on a pay-as-you-go basis. For example, if you want to deliver or stream video files to your global users, all you need to do is to put your content in an S3 bucket and create a CloudFront distribution that points to the bucket. Your user’s video player will use CloudFront URLs to request the video file. The request will be directed to the best edge location, based on the user’s location. The Amazon Cloudfront Content Delivery Network (CDN) will serve the video from its cache, fetching it from the S3 bucket if it has not already been cached. The CDN caches content at the edge locations for consistent, low-latency, high-throughput video delivery.
+
+81. What are the main benefits of using the AWS Service Catalog?
+
+`Centrally manage commonly deployed IT services`
+
+AWS Service Catalog allows organizations to create and manage catalogs of IT services that are approved for use on AWS. These IT services can include everything from virtual machine images, servers, software, and databases to complete multi-tier application architectures. AWS Service Catalog allows you to centrally manage commonly deployed IT services, and helps you achieve consistent governance and meet your compliance requirements, while enabling users to quickly deploy only the approved IT services they need.
+
+82. Which of the following statements describes the AWS Cloud’s agility?
+
+`AWS allows you to provision resources in minutes`
+
+In a cloud computing environment, new IT resources are only a click away, which means that you reduce the time to make those resources available to your developers from weeks to just minutes. This results in a dramatic increase in agility for the organization, since the cost and time it takes to experiment and develop is significantly lower.

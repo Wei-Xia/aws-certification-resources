@@ -36,3 +36,6 @@
 - [AWS Artifact](https://aws.amazon.com/artifact/)
 - [AWS X-Ray](https://aws.amazon.com/xray/)
 - [AWS Organizations](https://aws.amazon.com/organizations/)
+- [Amazon Simple Workflow Service](https://aws.amazon.com/swf/)
+- [Amazon Elastic Container Registry](https://aws.amazon.com/ecr/)
+- [AWS Service Catalog](https://aws.amazon.com/servicecatalog/)
