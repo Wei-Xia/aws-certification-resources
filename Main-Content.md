@@ -39,3 +39,4 @@
 - [Amazon Simple Workflow Service](https://aws.amazon.com/swf/)
 - [Amazon Elastic Container Registry](https://aws.amazon.com/ecr/)
 - [AWS Service Catalog](https://aws.amazon.com/servicecatalog/)
+- [Amazon Rekognition](https://aws.amazon.com/rekognition/)

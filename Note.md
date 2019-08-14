@@ -643,3 +643,41 @@ AWS Service Catalog allows organizations to create and manage catalogs of IT ser
 `AWS allows you to provision resources in minutes`
 
 In a cloud computing environment, new IT resources are only a click away, which means that you reduce the time to make those resources available to your developers from weeks to just minutes. This results in a dramatic increase in agility for the organization, since the cost and time it takes to experiment and develop is significantly lower.
+
+83. What is the DynamoDB replication technology that provides fast, local, read/write performance for globally-deployed applications?
+
+`Global Tables`
+
+Global Tables builds upon DynamoDB’s global footprint to provide you with a fully managed, multi-region, and multi-master database that provides fast, local, read and write performance for massively scaled, global applications. Global Tables replicates your Amazon DynamoDB tables automatically across your choice of AWS regions. Multi-master replication ensures that updates performed in any region are propagated to other regions, and that data in all regions are eventually consistent. This means tables accessed locally by your globally distributed application are always up to date.
+
+84. Due to the nature of the traditional infrastructure environments and their upfront cost model, they involve using fixed, long-running servers that can become problematic as heterogeneous system configurations emerge from continual changes and software patches being applied overtime. Which of the following approaches solves these problems in the AWS environment?
+
+`Use disposable resources instead of fixed servers`
+
+With the immutable infrastructure pattern, if a problem happens with a server (EC2 instance), rather than updating, it is replaced with a new server containing the latest patches and configuration.
+
+85. Which of the following approaches can be used to automate the process of deploying new compute resources having the same configuration and the same state of a running resource? (Choose two)
+
+`Use Bootstrapping, Use Golden Images`
+
+Whether you are deploying a new environment for testing, or increasing capacity of an existing system to cope with extra load, you will not want to manually set up new resources with their configuration and code. It is important that you make this an automated and repeatable process that avoids long lead times and is not prone to human error. The following approaches can be used to achieve this:
+
+- Bootstrapping: When you launch an AWS resource like an Amazon EC2 instance or Amazon Relational Database (Amazon RDS)DB instance, you start with a default configuration. You can then execute automated bootstrapping actions. That is, scripts that install software or copy data to bring that resource to a particular state. You can parameterize configuration details that vary between different environments (e.g.,production, test, etc.) so that the same scripts can be reused without modifications.
+
+- Golden Images: Certain AWS resource types like Amazon EC2instances, Amazon RDS DB instances, Amazon Elastic Block Store (Amazon EBS) volumes, etc., can be launched from a golden image: a snapshot of a particular state of that resource. When compared to the bootstrapping approach, a golden image results in faster start times and removes dependencies to configuration services or third-party repositories. This is important in auto-scaled environments where you want to be able to quickly and reliably launch additional resources as a response to demand changes.
+
+86. You have multiple accounts in AWS. Which of the following can be used to reduce costs?
+
+`Consolidated Billing`
+
+The Consolidated Billing feature is part of the “AWS organization” service. Once you add your multiple accounts to an Organization, AWS charges you based on a consolidated bill for all of the linked accounts. With Consolidated Billing, you can see a combined view of AWS charges incurred by all accounts, as well as get a cost report for each individual account associated with your payer account. For billing purposes, AWS treats all the accounts in the organization as if they were one account. Some services, such as Amazon EC2 and Amazon S3, have volume pricing tiers across certain usage dimensions that give you lower prices the more you use the service. With consolidated billing, AWS combines the usage from all accounts to determine which volume pricing tiers to apply, giving you a lower overall price whenever possible.
+
+87. Which services does AWS offer for free? (Choose two)
+
+`Elastic Beanstalk, AWS IAM`
+
+AWS Identity and Access Management is a feature of your AWS account offered at no additional charge. You will be charged only for use of other AWS services by your Users.
+
+There is no additional charge for AWS Elastic Beanstalk. You pay for AWS resources (e.g. EC2 instances or S3 buckets) you create to store and run your application. You only pay for what you use, as you use it; there are no minimum fees and no upfront commitments.
+
+88. Which of the following can be used to process a large number of binary files while following the AWS well-architected design principles?
