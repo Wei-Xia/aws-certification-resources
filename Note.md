@@ -681,3 +681,63 @@ AWS Identity and Access Management is a feature of your AWS account offered at n
 There is no additional charge for AWS Elastic Beanstalk. You pay for AWS resources (e.g. EC2 instances or S3 buckets) you create to store and run your application. You only pay for what you use, as you use it; there are no minimum fees and no upfront commitments.
 
 88. Which of the following can be used to process a large number of binary files while following the AWS well-architected design principles?
+
+`Use a number of parallel EC2 instance`
+
+One of the most important design principles is to “scale horizontally to increase aggregate system availability”. Replace one large resource with multiple small resources to reduce the impact of a single failure on the overall system. For example if you want to convert a large number of binary files to text files or if you want to transcode large number of video files to another format, it is recommended that you use multiple EC2 instances in parallel instead of using one large instance.
+
+89. What should you do if you see resources, which you don’t remember creating, in the AWS Management Console? (Choose two)
+
+`Change your AWS root account password and the password of any IAM users, Delete any resources on your account you don't remember creating`
+
+If you suspect that your account has been compromised, or if you have received a notification from AWS that the account has been compromised, perform the following tasks:
+
+- Change your AWS root account password and the passwords of any IAM users.
+
+- Delete or rotate all root and AWS Identity and Access Management (IAM) access keys.
+
+- Delete any resources on your account you didn’t create, such as EC2 instances and AMIs, EBS volumes and snapshots, and IAM users.
+
+- Respond to any notifications you received from AWS Support through the AWS Support Center.
+
+90. What is a placement group in Amazon EC2?
+
+`It is a group of EC2 instances within a single Availability Zone.`
+
+Placement Groups are logical groupings or clusters of instances within a single Availability Zone. Placement groups are specifically used for launching cluster of compute instance types. Placement groups are recommended for applications that benefit from low network latency, high network throughput, or both.
+
+91. Which of the following tools can be used to estimate your monthly bill?
+
+`Simple Monthly Caculator`
+
+The AWS Simple Monthly Calculator helps customers and prospects estimate their monthly AWS bill more efficiently. The calculator can be used to determine your best and worst case scenarios and identify areas of development to reduce your monthly costs and even compare it with other service providers who do not offer utility-style of billing (pay-as-you-go).
+
+92. Which of the following services can be used to monitor the HTTP and HTTPS requests that are forwarded to Amazon CloudFront?
+
+`AWS WAF`
+
+AWS WAF is a web application firewall that lets you monitor the HTTP and HTTPS requests that are forwarded to Amazon CloudFront or an Application Load Balancer. AWS WAF also lets you control access to your content by defining customizable web security rules.
+
+93. Which of the following AWS services uses tiered pricing?
+
+`AWS S3`
+
+For S3 storage and data transfer OUT from EC2, AWS follows a tiered pricing model. Tiered pricing means that you pay less per unit when you use more. For example the more GBs you use in S3, the more you save.
+
+94. For mobile applications, which of the following allows client devices access to AWS resources?
+
+`Amazon Cognito`
+
+Amazon Cognito provides solutions to control access to backend resources from your app. You can define roles and map users to different roles so your app can access only the resources that are authorized for each user.
+
+95. AWS allows you to create a “Golden Environment”, where you can capture your security policies (such as firewall rules, network access controls, internal/external subnets, and operating system hardening), reuse it among multiple projects, and have it become part of your continuous integration pipeline. Which of the following AWS services is most involved in creating such an environment?
+
+`AWS Cloud​Formation`
+
+Traditional security frameworks, regulations, and organizational policies define security requirements related to things such as firewall rules, network access controls, internal/external subnets, and operating system hardening. You can implement these in an AWS environment as well, but you now have the opportunity to capture them all in a script that defines a “Golden Environment.” This means you can create an AWS CloudFormation script that captures your security policy and reliably deploys it. Security best practices can now be reused among multiple projects and become part of your continuous integration pipeline. You can perform security testing as part of your release cycle, and automatically discover application gaps and drift from your security policy. Additionally, for greater control and security, AWS CloudFormation templates can be imported as “products" into AWS Service Catalog. This enables centralized management of resources to support consistent governance, security, and compliance requirements, while enabling users to quickly deploy only the approved IT services they need.
+
+96. Who can help your organization achieve their desired business outcomes with AWS?
+
+`AWS Professional Services`
+
+Adopting the AWS Cloud can provide you with sustainable business advantages. Supplementing your team with specialized skills and experience can help you achieve those results. The AWS Professional Services organization is a global team of experts that can help you realize your desired business outcomes when using the AWS Cloud.
