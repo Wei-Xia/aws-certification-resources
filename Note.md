@@ -741,3 +741,241 @@ Traditional security frameworks, regulations, and organizational policies define
 `AWS Professional Services`
 
 Adopting the AWS Cloud can provide you with sustainable business advantages. Supplementing your team with specialized skills and experience can help you achieve those results. The AWS Professional Services organization is a global team of experts that can help you realize your desired business outcomes when using the AWS Cloud.
+
+97. You are developing a document generator application that helps users create and modify PDFs. Which of the following allows you to publish your application?
+
+`AWS Serverless Application Repository`
+
+AWS Serverless Application Repository is used to share solutions with developers or to help your customers quickly understand the value of products and services you sell and support. Anyone with an AWS account can publish a serverless application or application component to the AWS Serverless Application Repository. You can share your published applications within your team, across your organization, or with the community at large. Publicly shared applications must include a link to the application's source code so others can view what the application does and how it works.
+
+98. What are the different types of identities in AWS? (Choose two)
+
+`IAM Roles, IAM Users`
+
+Identities on AWS include users (or groups) and roles. You create these identities on AWS to manage access to your AWS resources and determine the actions that each identity can perform on these resources.
+
+99. Which pillar of the AWS Well-Architected Framework focuses on using infrastructure as code?
+
+`Operational Excellence`
+
+Using infrastructure as code is one of the most important design principles for operational excellence in the cloud. In the cloud, you can apply the same engineering discipline that you use for application code to your entire environment. You can define your entire workload (applications, infrastructure, etc.) as code and update it with code. You can script your operational procedures and automate their execution by triggering them in response to events. By performing operations as code, you limit human error and enable consistent responses to events.
+
+100. Which of the following are advantages of using AWS as a cloud computing provider? (Choose two)
+
+Advantages of Cloud Computing include:
+
+- Trade capital for variable expense: Instead of having to invest heavily in data centers and servers before you know how you’re going to use them, you can only pay when you consume computing resources, and only pay for how much you consume.
+
+- Benefit from massive economies of scale: By using cloud computing, you can achieve a lower variable cost than you can get on your own. Because usage from hundreds of thousands of customers are aggregated in the cloud, providers such as Amazon Web Services can achieve higher economies of scale which translates into lower pay as you go prices.
+
+- Stop guessing capacity: Eliminate guessing on your infrastructure capacity needs. When you make a capacity decision prior to deploying an application, you often either end up sitting on expensive idle resources or dealing with limited capacity. With cloud computing, these problems go away. You can access as much or as little as you need, and scale up and down as required with only a few minutes notice.
+
+- Increase speed and agility: In a cloud computing environment, new IT resources are only ever a click away, which means you reduce the time it takes to make those resources available to your developers from weeks to just minutes. This results in a dramatic increase in agility for the organization, since the cost and time it takes to experiment and develop is significantly lower.
+
+- Stop spending money on running and maintaining data centers: Focus on projects that differentiate your business, not the infrastructure. Cloud computing lets you focus on your own customers, rather than on the heavy lifting of racking, stacking and powering servers.
+
+- Go global in minutes: Easily deploy your application in multiple regions around the world with just a few clicks. This means you can provide a lower latency and better experience for your customers simply and at minimal cost.
+
+101. Your organization heavily uses Chef to operate their configuration management systems. Which AWS Cloud service provides integration with Chef recipes to automate the configuration of servers across Amazon EC2 Instances?
+
+`AWS OpsWorks`
+
+AWS OpsWorks is a configuration management service that provides managed instances of Chef and Puppet. Chef and Puppet are automation platforms that allow you to use code to automate the configurations of your servers. OpsWorks lets you use Chef and Puppet to automate how servers are configured, deployed, and managed across your Amazon EC2 instances or on-premises compute environments.
+
+102. Which of the following is NOT a benefit of using Amazon VPC?
+
+`Amazon VPC allows you to control user interactions with various AWS resources`
+
+Amazon Virtual Private Cloud (Amazon VPC) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define. You have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways. Also, Subnets, IP ranges, route tables, and security groups are automatically created for you (default configurations), so you can concentrate on creating the applications to run in your VPC.
+
+103. Where does one go to find and download AWS SOC& PCI reports?
+
+`AWS Artifact`
+
+AWS Artifact provides on-demand downloads of AWS security and compliance documents, such as AWS ISO certifications, Payment Card Industry (PCI), and Service Organization Control (SOC) reports. You can submit the security and compliance documents (also known as audit artifacts) to your auditors or regulators to demonstrate the security and compliance of the AWS infrastructure and services that you use. You can also use these documents as guidelines to evaluate your own cloud architecture and assess the effectiveness of your company's internal controls.
+
+104. Which of the following are examples of the customer’s responsibility to implement “security in the cloud”? (Choose two)
+
+`Build application's schema, Analyzing network performance`
+
+"Security in the Cloud" refers to the Customer’s responsibility in the Shared Responsibility Model. Customers are responsible for items such as building application schema, analyzing network performance, configuring security groups and network ACLs, and encrypting their data.
+
+"Security of the Cloud" refers to the AWS’ responsibility in the Shared Responsibility Model. AWS is responsible for items such as the physical security of the DC (data center), creating hypervisors, replacement of old disk drives, and patch management of the infrastructure.
+
+105. Which of the following is the most cost-effective AWS service that can be used for long-term data backup and archiving?
+
+`AWS Storage Gateway`
+
+AWS Storage Gateway is a hybrid storage service that enables your on-premises applications to seamlessly use AWS cloud storage. You can use the service for backup and archiving, disaster recovery, cloud data processing, storage tiring, and migration. The gateway connects to AWS storage services, such as Amazon S3, Amazon S3 Glacier, Amazon S3 Glacier Deep Archive, Amazon EBS, and AWS Backup, providing storage for files, volumes, snapshots, and virtual tapes in AWS.
+
+106. Your company uses on-demand EC2 Instances dedicated to a project that has just been canceled. The company does not want to incur charges for these on-demand Instances. However, it also does not want to lose the data yet because there is a chance the project may be revived in the next few days. What should you do to minimize charges for these Instances in the meantime?
+
+`stop the instances as soon as possible`
+
+The best way to minimize charges is to stop the instances to avoid any data transfer charges that the instance may incur if left running.
+
+107. You are facing a lot of problems with your current contact center. Which service provides a cloud-based contact center that can deliver a better service for your customers?
+
+`Amazon Connect`
+
+Amazon Connect is a cloud-based contact center solution. Amazon Connect makes it easy to set up and manage a customer contact center and provide reliable customer engagement at any scale. You can set up a contact center in just a few steps, add agents from anywhere, and start to engage with your customers right away. Amazon Connect provides rich metrics and real-time reporting that allow you to optimize contact routing. You can also resolve customer issues more efficiently by putting customers in touch with the right agents. Amazon Connect integrates with your existing systems and business applications to provide visibility and insight into all of your customer interactions.
+
+108. Which of the following services provide real-time auditing for compliance and vulnerabilities? (Choose three)
+
+`AWS Config, Amazon Inspector, AWS Trusted Advisor`
+
+Services like AWS Config, Amazon Inspector, and AWS Trusted Advisor continually monitor for compliance or vulnerabilities giving you a clear overview of which IT resources are in compliance, and which are not. With AWS Config rules you will also know if some component was out of compliance even for a brief period of time, making both point-in-time and period-in-time audits very effective.
+
+109. Which of the following would you use to manage your encryption keys in the AWS Cloud? (Choose two)
+
+`AWS KMS, Cloud HSM`
+
+AWS Key Management Service (KMS) is a managed service that makes it easy for you to create and control the encryption keys used to encrypt your data, and uses FIPS 140-2 validated hardware security modules to protect the security of your keys. AWS Key Management Service is integrated with most other AWS services to help you protect the data you store with these services. AWS Key Management Service is also integrated with AWS CloudTrail to provide you with logs of all key usage to help meet your regulatory and compliance needs.
+
+AWS CloudHSM is a cloud-based hardware security module (HSM) that enables you to easily generate and use your own encryption keys on the AWS Cloud. With CloudHSM, you can manage your own encryption keys using FIPS 140-2 Level 3 validated HSMs. CloudHSM offers you the flexibility to integrate with your applications using industry-standard APIs, such as PKCS#11, Java Cryptography Extensions (JCE), and Microsoft CryptoNG (CNG) libraries.
+
+110. Which of the following is a cloud computing deployment model that connects infrastructure and applications between cloud-based resources and existing resources not located in the cloud ?
+
+`Hybrid`
+
+A hybrid deployment is a way to connect infrastructure and applications between cloud-based resources and existing resources that are not located in the cloud. The most common method of hybrid deployment is between the cloud and existing on-premises infrastructure to extend, and grow, an organization's infrastructure into the cloud while connecting cloud resources to the internal system.
+
+111. Which of the following services can be used to build video analytics applications?
+
+`Amazon Kinesis`
+
+You can use Amazon Kinesis to securely stream video from camera-equipped devices in homes, offices, factories, and public places to AWS. You can then use these video streams for video playback, security monitoring, face detection, machine learning, and other analytics.
+
+112. What does the term “Economies of scale” mean?
+
+`It means that AWS will continuously lower costs as it grows`
+
+By using cloud computing, you can achieve a lower variable cost than you would get on your own. Because usage from hundreds of thousands of customers is aggregated in the cloud, providers such as AWS can achieve higher economies of scale, which translates into lower pay as-you-go prices.
+
+113. Which DynamoDB feature can be used to reduce the latency of requests to a database from milliseconds to microseconds?
+
+`DAX`
+
+Amazon DynamoDB Accelerator (DAX) is a fully managed, highly available, in-memory cache for DynamoDB that delivers performance improvements from milliseconds to microseconds – even at millions of requests per second. DAX adds in-memory acceleration to your DynamoDB tables without requiring you to manage cache invalidation, data population, or cluster management.
+
+114. Which of the following strategies help analyze costs in AWS?
+
+`Using tags to group resources`
+
+Tags are key-value pairs that allow you to organize your AWS resources into groups.
+
+You can use tags to:
+
+- Visualize information about tagged resources in one place, in conjunction with Resource Groups.
+
+- View billing information using Cost Explorer and the AWS Cost and Usage report.
+
+- Send notifications about spending limits using AWS Budgets.
+
+It is recommended to use logical groupings of your resources that make sense for your infrastructure or business. You could organize your resources by: Project, Cost center, Development environment, Application or Department. For example, if you tag resources with an application name, you can track the total cost of a single application that runs on those resources.
+
+115. What are some key benefits of using AWS CloudFormation? (Choose three)
+
+The benefits of using AWS CloudFormation include:
+
+- CloudFormation allows you to model your entire infrastructure in a text file. This template becomes the single source of truth for your infrastructure. This helps you to standardize infrastructure components used across your organization, enabling configuration compliance and faster troubleshooting.
+
+- AWS CloudFormation provisions your resources in a safe, repeatable manner, allowing you to build and rebuild your infrastructure and applications, without having to perform manual actions or write custom scripts. CloudFormation takes care of determining the right operations to perform when managing your stack, and rolls back changes automatically if errors are detected.
+
+- Codifying your infrastructure allows you to treat your infrastructure as just code. You can author it with any code editor, check it into a version control system, and review the files with team members before deploying into production.
+
+- CloudFormation allows you to model and provision, in an automated and secure manner, all the resources needed for your applications across all regions and accounts.
+
+116. What are some key advantages of AWS Security? (Choose two)
+
+The Benefits of AWS Security include :
+
+- Keep Your Data Safe: The AWS infrastructure puts strong safeguards in place to help protect your privacy. All data is stored in highly secure AWS data centers.
+
+- Meet Compliance Requirements: AWS manages dozens of compliance programs in its infrastructure. This means that segments of your compliance have already been completed.
+
+- Save Money: Cut costs by using AWS data centers. Maintain the highest standard of security without having to manage your own facility.
+
+- Scale Quickly: Security scales with your AWS Cloud usage. No matter the size of your business, the AWS infrastructure is designed to keep your data safe.
+
+117. Which of the following resources are serverless? (Choose two)
+
+`AWS Lambda, Amazon ECS`
+
+AWS Lambda lets you run code without provisioning or managing servers. You pay only for the compute time you consume, and there is no charge when your code is not running. With Lambda, you can run code for virtually any type of application or backend service - all with zero administration. Just upload your code and Lambda takes care of everything required to run and scale your code with high availability.
+
+Amazon ECS features AWS Fargate, so you can deploy and manage containers without having to provision or manage servers. With Fargate, you no longer have to select Amazon EC2 instance types, provision, and scale clusters of virtual machines to run containers or schedule containers to run on clusters and maintain their availability. Fargate enables you to focus on building and running applications, not managing the underlying infrastructure.
+
+118. What does the AWS Storage Gateway provide?
+
+`It allows one to integrate on premises IT environments with Cloud Storage`
+
+AWS Storage Gateway connects an on-premises software appliance with cloud-based storage to provide seamless integration with data security features between your on-premises IT environment and the AWS storage infrastructure.
+
+119. When dealing with Container Services AWS is responsible for: (Choose two)
+
+`Managing the underlying infrastruture, Managing the application platform`
+
+The AWS shared responsibility model also applies to container services, such as Amazon RDS and Amazon EMR. For these services, AWS manages the underlying infrastructure and foundation services, the operating system and the application platform. For example, Amazon RDS for Oracle is a managed database service in which AWS manages all the layers of the container, up to and including the Oracle database platform. For services such as Amazon RDS, the AWS platform provides data backup and recovery tools; but it is your responsibility to configure and use tools in relation to your business continuity and disaster recovery (BC/DR) policy. For AWS Container services, you are responsible for the data and for firewall rules for access to the container service. For example, Amazon RDS provides RDS security groups, and Amazon EMR allows you to manage firewall rules through Amazon EC2 security groups for Amazon EMR instances.
+
+120. On the monthly statement, there is a section where you can see the charges for outbound data transfer. What is the name of that section?
+
+`AWS Data Transfer Out`
+
+Outbound data transfer is aggregated across services and then charged at the outbound data transfer rate. This charge appears on the monthly statement as AWS Data Transfer Out.
+
+121. You need to migrate a large number of on-premises workloads to AWS. Which of the following is the fastest way to achieve your goal?
+
+`Use the AWS Server Migration Service`
+
+AWS Server Migration Service (SMS) is an agentless service which makes it easier and faster for you to migrate thousands of on-premises workloads to AWS. AWS SMS allows you to automate, schedule, and track incremental replications of live server volumes, making it easier for you to coordinate large-scale server migrations.
+
+122. Which of the following are Amazon EC2 reserved instances types? (Select two)
+
+There are three types of EC2 reserved instances(RIs) that you can choose from based on your applications needs:
+
+- Standard RIs: These provide the most significant discount (up to 75% off On-Demand) and are best suited for steady-state usage.
+
+- Convertible RIs: These provide a discount (up to 54% off On-Demand) and the capability to change the attributes of the RI as long as the exchange results in the creation of Reserved Instances of equal or greater value. Like Standard RIs, Convertible RIs are best suited for steady-state usage.
+
+- Scheduled RIs: These are available to launch within the time windows you reserve. This option allows you to match your capacity reservation to a predictable recurring schedule that only requires a fraction of a day, a week, or a month.
+
+123. You are sure that your application deployed in AWS needs frequent updates for the next 6 months. Which of the following services would allow you to make these updates easily, retaining the ability to change the AWS resources powering the application any time?
+
+`AWS Elastic Beanstalk`
+
+AWS Elastic Beanstalk is considered a Platform as a Service (PaaS). it is an easy-to-use service for deploying, scaling and updating web applications and services developed with Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker on familiar servers such as Apache, Nginx, Passenger, and IIS. You can simply upload your code and Elastic Beanstalk automatically handles the deployment, from capacity provisioning, load balancing, auto-scaling to application health monitoring. At the same time, you retain full control over the AWS resources powering your application and can access the underlying resources at any time.
+
+124. Why are Serverless Architectures more economical than Server-based Architectures?
+
+`With the Server-based Architectures, servers continue to run all the time but with the serverless architectures the code runs only when needed.`
+
+Serverless architectures can reduce costs because you don’t have to manage or pay for underutilized servers, or provision redundant infrastructure to implement high availability. For example, you can upload your code to the AWS Lambda compute service, and the service can run the code on your behalf using AWS infrastructure. With AWS Lambda, you are charged for every 100ms your code executes and the number of times your code is triggered.
+
+125. Select the services that are server-based: (Choose two)
+
+Server-based services include: Amazon EC2, Amazon RDS, Amazon Redshift and Amazon EMR.
+
+Serverless services include: AWS Lambda, AWS Fargate, Amazon ECS and Amazon DynamoDB.
+
+126.  Who from the following will get the largest discount?
+
+`A user who choose to buy Reserved, Standard, All upfront instances`
+
+Reserved instance types include:
+
+- Standard RIs: These provide the most significant discount (up to 75% off On-Demand) and are best suited for steady-state usage.
+
+- Convertible RIs: These provide a discount (up to 54% off On-Demand) and the capability to change the attributes of the RI as long as the exchange results in the creation of Reserved Instances of equal or greater value.
+
+Therefore, Standard RIs provides more discounts than Convertible RIs.
+
+You can choose between three payment options when you purchase a Standard or Convertible Reserved Instance. With the All Upfront option, you pay for the entire Reserved Instance term with one upfront payment. With the Partial Upfront option, you make a low upfront payment and are then charged a discounted hourly rate for the instance for the duration of the Reserved Instance term. The No Upfront option does not require any upfront payment and provides a discounted hourly rate for the duration of the term.
+
+Remember that when you buy Reserved Instances, the larger the upfront payment, the greater the discount.
+
+- The All Upfront option provides you with the largest discount.
+
+- The Partial Upfront option provides fewer discounts than All Upfront.
+
+- The No Upfront option provides you with the least discount.

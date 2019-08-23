@@ -40,3 +40,7 @@
 - [Amazon Elastic Container Registry](https://aws.amazon.com/ecr/)
 - [AWS Service Catalog](https://aws.amazon.com/servicecatalog/)
 - [Amazon Rekognition](https://aws.amazon.com/rekognition/)
+- [AWS OpsWorks](https://aws.amazon.com/opsworks/)
+- [Amazon Connect](https://aws.amazon.com/connect/)
+- [Amazon Kinesis](https://aws.amazon.com/kinesis/)
+- [Amazon Elastic Container Service](https://aws.amazon.com/ecs/)
