@@ -144,14 +144,81 @@ You encrypt your own files before uploading them to S3.
 
 ### New Objects (PUTS)
 
-**Read After Write Consistency**
+**Read After Write Consistency:**
+
 When you upload a new S3 object, you are able read immediately after writing.
 
 ### Overwrite (PUTS) or Delete Objects (DELETES)
 
-**Eventual Consistency**
+**Eventual Consistency:**
+
 When you overwrite or delete an object it takes time for S3 to replicate version to AZs.
 
 If you were to read immediately, S3 may return you an old copy. You need to generally wait a few seconds before reading.
 
-## S3 - Cross Region Replication
+## S3 - Cross Region Replication (CRR )
+
+When enabled, any object that is uploaded will be **automatically replicated** to another region(s), provides higher durability and potential disaster recovery for object.
+
+You must have **versioning** turned on both the **source** and **destination** buckets. You can have cross-region replication replicate to another AWS account.
+
+## S3 - Versioning
+
+Versioning will:
+
+- Store all versions of an object in S3
+- Once enabled, it can NOT be disabled, only suspended on the bucket
+- Fully integrated with S3 Lifecycle rules
+- MFA Delete feature provides extra protection against deletion of your data
+
+## S3 - Lifecycle Management
+
+Lifecycle Management can:
+
+- Automate the process of moving objects to different Storage classes or deleting objects all together.
+- Be used together with **versioning**.
+- Be applied to **current** and **previous** version.
+
+Use-case:
+
+1. Set to move object to Glacier after 7 days
+2. Set to permanently delete after 365 days
+
+## S3 - Transfer Acceleration
+
+Fast and secure transfer of files **over long distances** between your end users and an S3 bucket.
+
+Utilize **CloudFront**'s distributed **Edge Locations**.
+
+Instead of uploading to your bucket, users use a **_distinct URL_** for an Edge Location.
+
+As data arrives at the Edge Location, it will automatically routed to S3 over a specially optimized network plan (Amazon's backbone network).
+
+## S3 - Presigned URLs
+
+Generate a URL which provides you temporary access to an object to either upload or download object data. Presigned URLs are commonly used to provide access to **private object**.
+
+You can use AWS CLI or AWS SDK to generate presigned URLs.
+
+A sample presigned URL will look like this:
+
+```
+https://mybucket.s3.amazonaws.com/myobject?AWSAccessKeyId=AKJAXXXXXXXXX&Expires=1503608432743&Signature=fdjasfadshf3432%fds
+```
+
+It will include:
+
+1. Access Key
+2. Expired Timestamp
+3. Signature
+
+## S3 - MFA Delete
+
+**MFA Delete** ensures users can not delete objects from a bucket unless they provide their MFA code.
+
+MFA Delete can only be enabled under these conditions:
+
+1. The **AWS CLI** must be used to turn on MFA
+2. The bucket must have **versioning turned on**
+
+Only the bucket owner logged in as **Root User** can **DELETE** objects from bucket.
