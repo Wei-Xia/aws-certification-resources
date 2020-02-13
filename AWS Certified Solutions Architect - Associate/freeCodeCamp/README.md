@@ -222,3 +222,93 @@ MFA Delete can only be enabled under these conditions:
 2. The bucket must have **versioning turned on**
 
 Only the bucket owner logged in as **Root User** can **DELETE** objects from bucket.
+
+## S3 - Cheat Sheet
+
+- **Simple Storage Service** (S3) Object-based storage. Store **unlimited** amount of data without worry of underlying storage infrastructure
+- S3 replicates data across at least 3 AZs to ensure 99.99% availability and 11' 9s of durability
+- Objects contain your data (they're like files)
+- Objects can be size anywhere from **0 Bytes** up to 5 Terabytes
+- Buckets contain objects. Buckets can also contain folders which can in turn can contain objects
+- When you upload a file to S3 successfully, you'll receive a HTTP 200 code
+- **Lifecycle Management** Objects can be moved between storage classes or objects can be deleted automatically based on a schedule
+- **Versioning** Objects are giving a Version ID. When new objects are uploaded the old objects are kept. You can access any object version. When you delete an object the previous object is restored. Once Versioning is turned on, it can not be turn off, only suspended.
+- **MFA Delete** enforce DELETE operations to require MFA token in order to delete an object. Must have versioning turned on to use. Can only turn on MFA Delete from the AWS CLI. Root Account is only allowed to delete object
+- All new buckets are **private by default**
+- Logging can be turned to on a bucket to log to track operations performed on object
+- **Access Control** is configured using **Bucket Policies** and **Access Control List (ACL)**
+- **Bucket Policies** are JSON documents which let you write complex control access
+- **ACLs** are the legacy method (not deprecated) where you grant access to objects and buckets with simple actions.
+- **Security in Transit** - Uploading files is done over SSL
+- **SSE** stands for Server Side Encryption. S3 has **3 options** for SSE
+- **SSE-AES** - S3 handles the key, uses AES-256 algorithm
+- **SSE-KMS** - Envelope encryption via AWS KMS and you manage the key
+- **SSE-C** - Customer provided key (you manage the keys)
+- **Client-Side Encryption** - You must encrypt your own files before uploading them to S3
+- **Cross Region Replication (CRR)** allows you to replicate files across regions for greater durability. You must have versioning turned on in the source and destination bucket. You can have CRR replicate to bucket in another AWS account
+- **Transfer Acceleration** provide faster and secure uploads from anywhere in the world. Data is uploaded via distinct url to an Edge Location. Data is then transported to your S3 bucket via AWS backbone network
+- **Presigned Urls** is a url generated via the AWS CLI and SDK. It provides temporary access to write or download object data. Presigned Urls are commonly used to access private objects.
+- S3 has **6 different** Storage Classes:
+  - **Standard**: Fast! 99.99% Availability, 11 9's Durability. Replicated across at least three AZs.
+  - **Intelligent Tiering**: Use ML to analyze your object usage and determine the appropriate storage class. Data is moved to the most cost-effective access tier, without any performance impact or added overhead.
+  - **Standard Infrequently Accessed (IA)**: Still Fast! Cheaper if you access files less than once a month. Additional retrieval fee is applied. 50% less than Standard (reduced availability).
+  - **One Zone IA**: Still fast! Objects only exist in one AZ. Availability is 99.5%, but cheaper than Standard IA by 20% less (Reduce durability). Data could get destroyed. A retrieval fee is applied.
+  - **Glacier**: For long term cold storage. Retrieval of data can take minutes to hours but the off is very cheap storage.
+  - **Glacier Deep Archive**: The lowest cost storage class. Data retrieval time is 12 hours.
+
+# Snowball
+
+## Introduction to Snowball
+
+- **Low Cost**: It cost thousands of dollars to transfer 100 TB over high speed internet. Snowball can reduce that costs by **1/5th**
+- **Speed**: It can take 100 TB over 100 days to transfer over high speed internet. Snowball can reduce that transfer time by **less than a week**
+- Snowball come in two sizes:
+  - **50 TB** (42 TB of usable space)
+  - **80 TB** (72 TB of usable space)
+
+### Snowball features and limitations
+
+- E-lnk display (shipping information)
+- Tamper and weather proof
+- Data is encrypted end-to-end (256-bit encryption)
+- Use Trusted Platform Module (TPM): a specialized chip on an endpoint device that stores RSA encryption keys specific to the host system for hardware authentication
+- For security purposes, data transfer must be completed within **90 days** of the Snowball being prepared
+- Snowball can **Import** and **Export** from S3
+
+## Snowball Edge
+
+Similar to Snowball but with more storage and with local processing
+
+- **Petabyte-scale** data transfer service
+- **Move data onto AWS** via physical briefcase computer
+- **More storage** and on-site **computer capabilities**
+- Snowball Edge come in two sizes:
+  - **100 TB** (42 TB of usable space)
+  - **100 TB Clustered** (45 TB per node)
+
+### Snowball features and limitations
+
+- LCD display (shipping information and other functionality)
+- Can undertake local processing and edge-computing workloads
+- Can use in a cluster in groups of 5 to 10 devices
+- Three options for device configurations
+  - storage optimized (24 vCPUs)
+  - compute optimized (54 vCPUs)
+  - GPU optimized (54 vCPUs)
+
+## Snowmobile
+
+a 45-foot long ruggedize shipping container, pulled by a semi-trailer truck.
+
+Transfer up to 100 PB per Snowmobile.
+
+AWS personnel will help you connect your network to the snowmobile and when data transfer is completed, they'll drive it back to AWS to import into S3 or Glacier.
+
+### Security Features
+
+- GPS Tracking
+- Alarm monitoring
+- 24/7 video surveillance
+- an escort security vehicle while in transit (optional)
+
+## Snowball - Cheat Sheet
