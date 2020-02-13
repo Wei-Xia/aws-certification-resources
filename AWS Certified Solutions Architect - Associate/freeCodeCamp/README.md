@@ -312,3 +312,24 @@ AWS personnel will help you connect your network to the snowmobile and when data
 - an escort security vehicle while in transit (optional)
 
 ## Snowball - Cheat Sheet
+
+- **Snowball** and **Snowball Edge** is a rugged container which contains a storage device
+- **Snowmobile** is a 45-foot long ruggedize shipping container, pulled by a semi-trailer truck
+- Snowball and Snowball Edge is for **peta-scale** migration. Snowmobile is for **exabyte-scale** migration
+- **Low Cost** thousands of dollars to transfer 100 TB over high speed internet, Snowball is **1/5th**
+- **Speed** 100 TB over 100 days to transfer over high speed internet, Snowball takes **less than a week**
+- **Snowball come in two sizes**:
+  - **50 TB** (42 TB of usable space)
+  - **80 TB** (72 TB of usable space)
+- **Snowball Edge come in two sizes**:
+  - **100 TB** (42 TB of usable space)
+  - **100 TB Clustered** (45 TB per node)
+- **Snowmobile comes in one size**: 100 PB
+- You can both **export** and **import** data using Snowball or Snowmobile
+- You can import into **S3** or **S3 Glacier**
+- **Snowball Edge** can undertake local processing and edge-computing workloads
+- **Snowball Edge** can use in a cluster in groups of 5 to 10 devices
+- **Snowball Edge** provides three options for device configurations
+  - storage optimized (24 vCPUs)
+  - compute optimized (54 vCPUs)
+  - GPU optimized (54 vCPUs)
