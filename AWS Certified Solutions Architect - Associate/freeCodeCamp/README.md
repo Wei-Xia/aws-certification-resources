@@ -333,3 +333,71 @@ AWS personnel will help you connect your network to the snowmobile and when data
   - storage optimized (24 vCPUs)
   - compute optimized (54 vCPUs)
   - GPU optimized (54 vCPUs)
+
+# Virtual Private Cloud
+
+## Core Components
+
+Think of a AWS VPC as your own **personal data center**.
+
+Give you complete control over your **virtual networking environment**.
+
+![001](./assets/001.jpg)
+
+Combining these components and services is what makes up your VPC:
+
+- Internet Gateway (IGW)
+- Virtual Private Gateway (VPN Gateway)
+- Routing Tables
+- Network Access Control Lists (NACLs) - Stateless
+- Security Groups (SG) Stateful
+- Public Subnets
+- Private Subnets
+- Nat Gateway
+- Customer Gateway
+- VPC Endpoints
+- VPC Peering
+
+## VPC Key Features
+
+- VPCs are **Region Specific** they do not span regions
+- You can create up to **5 VPC** per region
+- Every region comes with a default VPC
+- You can have **200 subnets** per VPC
+- You can use **IPv4 CIDR Block** and in addition to a **IPv6 CIDR Block** (the address of the VPC)
+- **Cost nothing**: VPC, Route Table, Nacls, Internet Gateways, Security Groups and Subnets, VPC Peering
+- **Some things cost money**: eg. NAT Gateway, VPC Endpoints, VPC Gateway, Customer Gateway
+- **DNS hostname**: Your instance have domain name addresses
+
+## Default VPC
+
+AWS has a default VPC in every region so you can **immediately** deploy instances.
+
+- Create a VPC with a size with 16 IPv4 CIDR block (172.31.0.0/16)
+- Create a size with 20 **default subnet in each Availability Zone**
+- Create a **Internet Gateway** and connect it to your default VPC
+- Create a **default security group** and associate it with your default VPC
+- Create a **default network access control list (NACL)** and associate it with your default VPC
+- Associate the **default DHCP (Dynamic Host Configuration Protocol)** options set for your AWS account with your default VPC
+- When you create a VPC, it automatically has a main route table
+
+## Default Everywhere IP
+
+**0.0.0.0/0** is also known as default, it represents **all possible IP addresses**.
+
+When we specify **0.0.0.0/0** in our route table for IGW, we are allowing internet access.
+
+When we specific **0.0.0.0/0** in our security group inbound rules, we are allowing all traffic from the internet access our public resources.
+
+When you see **0.0.0.0/0**, just think of giving access from anywhere or the internet.
+
+## VPC Peering
+
+**VPC Peering** allows you to connect one VPC with another over a **direct network route** using **private IP addresses**.
+
+- Instances on peered VPCs behave just like they are on the **same network**
+- Connect VPCs across **same** or **different AWS accounts** and **regions**
+- Peering uses a **Star Configuration: 1 Central VPC - 4 other VPCs**
+- **No Transitive Peering** (peering must take place directly between VPCs)
+  - Needs a one to one connect to immediate VPC
+- **No Overlapping CIDR Blocks**
