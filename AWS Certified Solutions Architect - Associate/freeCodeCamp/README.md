@@ -401,3 +401,111 @@ When you see **0.0.0.0/0**, just think of giving access from anywhere or the int
 - **No Transitive Peering** (peering must take place directly between VPCs)
   - Needs a one to one connect to immediate VPC
 - **No Overlapping CIDR Blocks**
+
+## VPC Route Tables
+
+Route tables are used to determine where **network traffic is directed**.
+
+Each **subnet** in your VPC **must be associated** with a route table, a subnet can only be associated **with one route table at a time**, but you can associate multiple subnets with the same route table.
+
+The Internet -> IGW -> Route -> Route Table -> Public subnet
+
+## VPC Internet Gateway (IGW)
+
+The Internet Gateway allows your VPC **access to the internet**.
+
+IGW does **two** things:
+
+- Provide a target in your VPC route tables for internet-routable traffic
+- Perform network address translation (NAT) for instances that have been assigned **public IPv4 addresses**
+
+To route out to the internet you need to add in your route tables you need to add a route.
+
+To the internet gateway and set the Destination to be **0.0.0.0/0**.
+
+## VPC Bastion / Jumpbox
+
+![002](./assets/002.jpg)
+
+Bastions are EC2 instances which are security harden. They are designed to help you gain access to your EC2 Instances via SSH or RCP. That are in a **private subnet**.
+
+They are also known as Jump boxes because you are jumping from one box to access another.
+
+NAT Gateways/Instances are only intended for EC2 instances to gain outbound access to the internet for things such as security updates.
+
+NATs can't/shouldn't be used as Bastion.
+
+## VPC Direct Connect
+
+![003](./assets/003.jpg)
+
+AWS Direct Connect is the AWS solution for establishing **dedicated network** connections from on-premises locations to AWS.
+
+**Very fast network**:
+
+- Lower Bandwidth 50M - 500M
+- Higher Bandwidth 1GB or 10 GB
+
+Benefits:
+
+- Help **reduce network costs** and **increase bandwidth throughput**. (great for high traffic networks)
+- Provides a **more consistent network experience** than a typical internet-based connection. (reliable and secure)
+
+## VPC Endpoints Introduction
+
+Think of a secret tunnel where you don't have to leave the AWS Network.
+
+There are **two types** of VPC Endpoints:
+
+1. **Interface Endpoint**
+2. **Gateway Endpoint**
+
+VPC Endpoints allow you to **privately connect your VPC to other AWS services**.
+
+VPC endpoint services can:
+
+- Eliminate the need for an **Internet Gateway**, **NAT device**, **VPN connection**, or **AWS Direct Connect** connections.
+- Instance in the VPC **do not require a public IP address** to communicate with service resource.
+- Traffic between your VPC and other services **does not leave the AWS network**.
+- **Horizontally scaled**, **redundant**, and **highly available** VPC component.
+- Allow secure communication between instances and services **without adding availability risks or bandwidth constraints** on your traffic.
+
+## VPC Interface Endpoints
+
+**Internet Endpoints** are **Elastic Network Interfaces (ENI)** with a **private IP address**.
+
+They serve as an entry point for traffic going to a supported service.
+
+Interface Endpoints are powered by **AWS PrivateLink**, access services hosted on AWS easily and securely by keeping your network traffic within the AWS network.
+
+Interface Endpoints support the following **AWS Services**:
+
+- API Gateway
+- CloudFormation
+- CloudWatch
+- Kinesis
+- SageMaker
+- Codebuild
+- AWS Config
+- EC2 API
+- ELB API
+- AWS KMS
+- Secrets Manager
+- Security Token Service
+- Service Catalog
+- SNS
+- SQS
+- Systems Manager
+- Marketplace Partner Services
+- Endpoint Services in other AWS accounts
+
+## VPC Gateway Endpoints
+
+A **Gateway Endpoint** is a gateway that is a target for **a specific route** in your **route table**, used for traffic destined for a supported AWS service.
+
+To create a Gateway Endpoint, you must specify the VPC in which you want to create the endpoint, and the service to which you want to establish the connection.
+
+Gateway Endpoints current supports 2 service:
+
+- Amazon S3
+- DynamoDB
