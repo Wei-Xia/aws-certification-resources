@@ -540,9 +540,58 @@ You can allow or deny traffic. You could **block a single IP address** (You can'
 
 ![005](./assets/005.jpg)
 
-We determine there is a malicious actor at a specific IP address is trying to access our instances so we block their IP.
+- We determine there is a malicious actor at a specific IP address is trying to access our instances so we **block their IP**.
+- We never need to SSH into instances so we add a **DENY for these subnets**. This is just an additional measure in case our Security Groups SSH port was left open.
 
-We never need to SSH into instances so we add a DENY for these subnets. This is just an additional measure in case our Security Groups SSH port was left open.
+## VPC Security Groups Introduction
+
+A virtual firewall that controls the traffic to and from EC2 instance.
+
+Security Groups are associated with EC2 instances.
+
+![006](./assets/006.jpg)
+
+Each Security Group contains a set of rules that filter traffic coming **into(inbound)** and **out of (outbound)** EC2 instances by providing security at the **protocol** and **port** access level.
+
+There are no **_DENY_** rules. **All traffic is blocked** by default unless a rule specifically allows it.
+
+**Multiple Instances** across multiple subnets can belong to a **Security Group**.
+
+## VPC Security Groups Limits
+
+- You can have up to **10,000 Security Groups in a Region** (default is 2,500)
+- You can have **60 inbound rules** and **60 outbound rules** per security group
+- **16 Security Groups** per ENI - Elastic Network Interface (default is 5)
+
+## VPC Security Groups Use Case
+
+![007](./assets/007.jpg)
+
+- You can specify the source to be an IP range or A specific IP (/32 is a specific IP address)
+- You can specify the source to be another security group
+- An instance be **belong to multiple Security Groups**, and rules are **permissive** (instead of restrictive). Meaning if you have one security group which has no Allow and you add an allow to another than it will Allow
+
+## VPC Network Address Translation (NAT)
+
+Network Address Translation (NAT) is the method of **re-mapping** one IP address space into another.
+
+![008](./assets/008.jpg)
+
+If you have a private network and you need to help gain outbound access to the internet you would need to use a NAT gateway to remap the Private IPs.
+
+If you have two networks which have conflicting network addresses you can use a NAT to make the addresses more agreeable.
+
+## VPC NAT Instances VS NAT Gateways
+
+NATs have to run within a **Public Subnet**.
+
+![009](./assets/009.jpg)
+
+⤴️ **NAT Instances** (legacy) are individual EC2 instances. Community AMIs exist to launch NAT Instances.
+
+![010](./assets/010.jpg)
+
+⤴️ **NAT Gateway** is a manged service which launches redundant instances within the selected AZ.
 
 ## VPC Cheat Sheet
 
@@ -575,13 +624,44 @@ We never need to SSH into instances so we add a DENY for these subnets. This is 
 ### NACLs Cheat Sheet
 
 - Network Access Control List is commonly known as NACL
-- VPCs are automatically given a default NACL which allow all outbound and inbound traffic
+- VPCs are automatically given a default NACL which allow **all outbound and inbound** traffic
 - Each subnet with a VPC must be associated with a NACL
 - Subnets can only be associated with 1 NACL at a time. Associating a subnet with a new NACL will remove the previous association
 - If a NACL is not explicitly associated with a subnet, the subnet will automatically be associated with the default NACL
 - NACL has inbound and outbound rules, just like Security Groups
-- Rule can either allow or deny traffic, unlike Security Groups which can only allow
+- Rule can either **allow** or **deny** traffic, unlike Security Groups which can only allow
 - NACLs are STATELESS, which means any allowed inbound traffic is also allowed outbound
 - When you create a NACLs, it will deny all traffic by default
 - NACLs contain a numbered list of rules that gets evaluated in order from lowest to highest
 - If you needed a block a single IP address, you could via NACLs (Security Groups cannot deny)
+
+### Security Group Cheat Sheet
+
+- Security Groups acts as a firewall at the instance level
+- Unless allowed specifically, all **inbound traffic** is **blocked by default**
+- All **Outbound traffic** from the instance is **allowed by default**
+- You can specific for the source to be either an IP range, single IP Address or another security group
+- Security Groups are **STATEFUL** (if traffic is allowed inbound, then it is also allowed outbound)
+- Any changes to a Security Group take effect immediately
+- EC2 Instances can belong to multiple security groups
+- Security groups can contain multiple EC2 Instances
+- You **cannot block specific IP addresses** with Security Groups, for this you would need a Network Access Control List (NACL)
+- You can have up to 10,000 Security Groups per Region (default is 2,500)
+- You can have 60 inbound and 60 outbound rules per Security Group
+- You can have 16 Security Group associated to an ENI (default is 5)
+
+### NAT Instance and NAT Gateway Cheat Sheet
+
+- When creating a NAT instance you **must disable source and destination checks** on the instance
+- NAT instances **must exist in a public subnet**
+- You must have a **route out** of the private subnet to the NAT instance
+- The size of a NAT instance determines **how much traffic can be handled**
+- **High availability** can be achieved using **Autoscaling Groups**, multiple **subnets in different AZs**, and **automate failover between them using a script**.
+- NAT Gateways are **redundant inside an Availability Zone** (can survive failure of EC2 instance)
+- You can only have **1 NAT Gateway inside 1 Availability Zone** (cannot span AZs)
+- Starts at 5 Gbps and scales all the way up to 45 Gbps
+- NAT Gateways are the **preferred setup for enterprise systems**
+- There is **no requirement to patch NAT Gateways**, and there is **no need to disable Source/Destination checks** for the NAT Gateway (unlike NAT Instances)
+- NAT Gateways are **automatically assigned a public IP address**
+- **Route Tables** for the NAT Gateway MUST be updated
+- Resources in multiple AZs sharing a Gateway will **lose internet access if the Gateway** goes down, unless you create a **Gateway in each AZ** and configure **route tables** accordingly
