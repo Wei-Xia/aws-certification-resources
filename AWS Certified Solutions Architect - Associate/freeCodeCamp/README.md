@@ -21,7 +21,48 @@
   - [S3 - Data Consistency](#s3---data-consistency)
     - [New Objects (PUTS)](#new-objects--puts-)
     - [Overwrite (PUTS) or Delete Objects (DELETES)](#overwrite--puts--or-delete-objects--deletes-)
-  - [S3 - Cross Region Replication](#s3---cross-region-replication)
+  - [S3 - Cross Region Replication (CRR )](#s3---cross-region-replication--crr--)
+  - [S3 - Versioning](#s3---versioning)
+  - [S3 - Lifecycle Management](#s3---lifecycle-management)
+  - [S3 - Transfer Acceleration](#s3---transfer-acceleration)
+  - [S3 - Presigned URLs](#s3---presigned-urls)
+  - [S3 - MFA Delete](#s3---mfa-delete)
+  - [S3 - Cheat Sheet](#s3---cheat-sheet)
+- [Snowball](#snowball)
+  - [Introduction to Snowball](#introduction-to-snowball)
+    - [Snowball features and limitations](#snowball-features-and-limitations)
+  - [Snowball Edge](#snowball-edge)
+    - [Snowball features and limitations](#snowball-features-and-limitations-1)
+  - [Snowmobile](#snowmobile)
+    - [Security Features](#security-features)
+  - [Snowball - Cheat Sheet](#snowball---cheat-sheet)
+- [Virtual Private Cloud](#virtual-private-cloud)
+  - [Core Components](#core-components)
+  - [VPC Key Features](#vpc-key-features)
+  - [Default VPC](#default-vpc)
+  - [Default Everywhere IP](#default-everywhere-ip)
+  - [VPC Peering](#vpc-peering)
+  - [VPC Route Tables](#vpc-route-tables)
+  - [VPC Internet Gateway (IGW)](#vpc-internet-gateway--igw-)
+  - [VPC Bastion / Jumpbox](#vpc-bastion---jumpbox)
+  - [VPC Direct Connect](#vpc-direct-connect)
+  - [VPC Endpoints Introduction](#vpc-endpoints-introduction)
+  - [VPC Interface Endpoints](#vpc-interface-endpoints)
+  - [VPC Gateway Endpoints](#vpc-gateway-endpoints)
+  - [VPC Flow Logs Introduction](#vpc-flow-logs-introduction)
+  - [VPC Network Access Control List Introduction](#vpc-network-access-control-list-introduction)
+  - [VPC NACLs Use Case](#vpc-nacls-use-case)
+  - [VPC Security Groups Introduction](#vpc-security-groups-introduction)
+  - [VPC Security Groups Limits](#vpc-security-groups-limits)
+  - [VPC Security Groups Use Case](#vpc-security-groups-use-case)
+  - [VPC Network Address Translation (NAT)](#vpc-network-address-translation--nat-)
+  - [VPC NAT Instances VS NAT Gateways](#vpc-nat-instances-vs-nat-gateways)
+  - [VPC Cheat Sheet](#vpc-cheat-sheet)
+    - [Endpoint Cheat Sheet](#endpoint-cheat-sheet)
+    - [Flow Logs Cheat Sheet](#flow-logs-cheat-sheet)
+    - [NACLs Cheat Sheet](#nacls-cheat-sheet)
+    - [Security Group Cheat Sheet](#security-group-cheat-sheet)
+    - [NAT Instance and NAT Gateway Cheat Sheet](#nat-instance-and-nat-gateway-cheat-sheet)
 
 ---
 
@@ -45,7 +86,7 @@ The S3 console provides an interface for you to upload and access your data.
 
 ### S3 Object
 
-Object contain your data. They are like files.
+Object contains your data. They are like files.
 
 Object may consist of:
 
