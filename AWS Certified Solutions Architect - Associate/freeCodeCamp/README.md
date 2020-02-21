@@ -814,3 +814,19 @@ Multi-factor authentication (MFA) can be turned on per user.
 The user has to turn on MFA **themselves**, Administrator **cannot directly enforce** users to have MFA.
 
 The Administrator account could **create a policy** requiring MFA to access certain resources.
+
+## IAM Cheat Sheet
+
+# Amazon Cognito
+
+## Amazon Cognito Introduction
+
+Decentralized Managed **Authentication**.
+
+Sign-up, Sign-in integration for your apps. Social identity provider eg. Facebook, Google.
+
+![013](./assets/013.jpg)
+
+- **Cognito User Pools**: User directory with authentication to Identity Provider (IpD) to grant access to your app
+- **Cognito Identity Pools**: Provide temporary credentials for users to access AWS Services
+- **Cognito Sync**: Syncs user data and preferences across all devices
