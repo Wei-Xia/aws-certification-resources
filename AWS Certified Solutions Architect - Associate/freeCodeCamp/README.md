@@ -706,3 +706,111 @@ NATs have to run within a **Public Subnet**.
 - NAT Gateways are **automatically assigned a public IP address**
 - **Route Tables** for the NAT Gateway MUST be updated
 - Resources in multiple AZs sharing a Gateway will **lose internet access if the Gateway** goes down, unless you create a **Gateway in each AZ** and configure **route tables** accordingly
+
+# Identity Access Management (IAM)
+
+## IAM Core Component
+
+IAM allows **management** of access of **users** and **resource**
+
+### IAM Identities
+
+- IAM **Users**: End users who log into the console or interact with AWS resource programmatically
+- IAM **Groups**: Group up your Users so they all share permission levels of the group eg. Administrators, Developers, Auditors
+- IAM **Roles**: Associate permissions to a Role and then assign this to an Users or Groups
+
+### IAM Policies
+
+JSON documents which grant permissions for a specific user, group, or role to access services. Policies are **attached to the IAM Identities**.
+
+### Use case
+
+![011](./assets/011.jpg)
+
+- A user can belong to a group. Roles can be applied to groups to quickly add and remove permissions en-masse to users
+- A user can have a role directly attached. An policy can be directly attached to a user (called an **Inline Policy**)
+- Roles can have many policies attached
+- Various AWS resources allow you attache roles directly to them
+
+## IAM Types of Policies
+
+- **Managed Policies**: A policy which is managed by AWS, which you cannot edit. Managed policies are labeled with an orange box.
+- **Customer Managed Policies**: A policy created by the customer which is editable. Customer policies have no symbol beside them.
+- **Inline Policies**: A policy which is directly attached to the users.
+
+## IAM Policies Structure
+
+Policies Example:
+
+```JSON
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+      "Sid": "Deny-Barclay-S3-Access",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListAllMyBuckets"
+      ],
+      "Resource": "arn:aws:s3:::*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": "arn:aws:s3:::examplebucket",
+      "Condition": {
+        "NumericLessThanEquals": {
+          "aws:MultiFactorAuthAge": "3600"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:GetObject",
+        "s3:GetObjectAcl",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::examplebucket/*",
+      "Condition": {
+        "NumericLessThanEquals": {
+          "aws:MultiFactorAuthAge": "3600"
+        }
+      }
+    }
+  ]
+}
+```
+
+- **Version**: Policy language version. `2012-10-17` is the latest version
+- **Statement**: container for the policy element you are allowed to have multiples
+- **Sid(optional)**: a way of labeling your statements
+- **Effect**: Set whether the policy will `Allow` or `Deny`
+- **Principal**: account, user, role or federated user to which you would like to allow or deny access
+- **Action**: list of actions that the policy allows or denies
+- **Resource**: the resource to which the action(s) applies
+- **Condition(optional)**: circumstances under which the policy grants permission.
+
+## IAM Password Policy
+
+![012](./assets/012.jpg)
+
+In IAM you can set a **Password Policy** to set the minimum requirements of a password and **rotate** passwords so users have to update their passwords after certain days.
+
+## IAM Programmatic Access Keys
+
+Access Keys allow users to interact with AWS service **programmatically** via the **AWS CLI** or **AWS SDK**.
+
+You're allowed **two** Access Keys per user.
+
+## IAM Multi-Factor Authentication
+
+Multi-factor authentication (MFA) can be turned on per user.
+
+The user has to turn on MFA **themselves**, Administrator **cannot directly enforce** users to have MFA.
+
+The Administrator account could **create a policy** requiring MFA to access certain resources.
