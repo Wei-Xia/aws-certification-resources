@@ -817,6 +817,27 @@ The Administrator account could **create a policy** requiring MFA to access cert
 
 ## IAM Cheat Sheet
 
+- **Identity Access Management** is used to manage **access** to users and resources
+- IAM is a universal system, which applies to all regions at the same time
+- IAM is a free service
+- A root service is the account initially created when AWS is set up (full administrator)
+- New IAM accounts have no permissions by default until granted
+- New users get assigned an Access Key Id and Secret when first created when you give them programmatic access
+- Access Keys are only used for CLI and SDK (cannot access console)
+- Access keys are only shown once when created. If lost, they must be deleted/recreated again
+- Always setup MFA for Root Accounts
+- Users must enable MFA on their own, Administrator cannot turn it on for each user
+- IAM allows your set password policies to set minimum password requirements or rotate passwords
+- **IAM Identities** as Users, Groups, and Roles
+- **IAM Users**: End users who log into the console or internet with AWS resources programmatically
+- **IAM Groups**: Group up your Users so they all share permission levels of the group eg. Administrators, Developers, Auditors
+- **IAM Roles**: Associate permissions to a Role and then assign this to an Users or Groups
+- **IAM Policies**: JSON documents which grant permissions for a specific user, group, or role to access services
+- Policies are attached to IAM Identities
+- **Managed Policies** are policies provided by AWS and cannot be edited
+- **Customer Managed Policies** are policies created by user/customer, which you can edit
+- **Inline Policies** are policies which are directly attached to a user
+
 # Amazon Cognito
 
 ## Amazon Cognito Introduction
@@ -830,3 +851,51 @@ Sign-up, Sign-in integration for your apps. Social identity provider eg. Faceboo
 - **Cognito User Pools**: User directory with authentication to Identity Provider (IpD) to grant access to your app
 - **Cognito Identity Pools**: Provide temporary credentials for users to access AWS Services
 - **Cognito Sync**: Syncs user data and preferences across all devices
+
+## Amazon Cognito Web Identity Federation
+
+### Web Identity Federation
+
+To exchange identity and security information between an identity provider (IdP) and an application.
+
+### Identity Provider (IdP)
+
+A trusted provider of your user identity that lets you use authenticate to access other services. Identity Providers could be: Facebook, Amazon, Google, Twitter, Github, LinkedIn.
+
+### Types of Identity Providers
+
+The technology that behind the Identity Providers:
+
+- **Single Sign On (SSO)**: Security Assertion Markup Language (SAML)
+- **OpenID Connect (OIDC)**: OpenID - Web Identity Federation:
+
+## Amazon Cognito User Pools
+
+User Pool are user directories used to manage the actions for web and mobile apps such as:
+
+- **Sign up**
+- **Sign in**
+- **Account recovery**
+- **Account information**
+
+### User Pools Feature
+
+- Allow users to sign-in directly to the User Pool, or using Web Identity Federation
+- Use AWS Cognito as the identity broker between AWS and the identity provider
+- Successful user authentication generates a JSON Web Token (JWTs)
+- User Pools can be thought of as **the account used to access the system** (ie. email address and password)
+
+### User Pools Settings
+
+- Choose what attributes
+- Choose password requirements
+- Apply MFA
+- Restrict whether users are allow to sign up on their own or need admin verification
+- Analytics with PinPoint for user campaigns
+- Trigger customer log via Lambdas after actions such as after sign-up
+
+## Amazon Cognito Identity Pools
+
+**Identity Pools** provide **temporary AWS credentials** to access services eg. S3, DynamoDB.
+
+Identity Pools can be thought of as **the actual mechanism authorizing access to the AWS resources**.
