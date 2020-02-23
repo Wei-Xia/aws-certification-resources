@@ -937,6 +937,16 @@ Use **Simple Notification Service (SNS)** to send notifications to all user devi
 
 ## Amazon Cognito Cheat Sheet
 
+- Cognito is decentralized managed authentication system. When you need to easily add authentication to your mobile and desktop app think Cognito
+- **User Pools** user directory, allows users to authenticate using OAuth to IpD such as Facebook, Google, Amazon to connect to web-applications. Cognito User Pools is in itself a IpD
+- User Pools use **JWT**s for to persist authentication
+- **Identity Pools** provides **temporary AWS credentials** to access service eg. S3, DynamoDB
+- **Cognito Sync** can sync **user data** and **preferences** across devices with one line of code (powered by SNS)
+- **Web Identity Federation** exchange identity and security information between an identity provider (IdP) and an application
+- **Identity Provider (IdP)** is a trusted provider of your user identity that lets you use authenticate to access other services, eg. Facebook, Twitter, Google, Amazon
+- **OIDC** is a type of Identity Provider which uses OAuth
+- **SAML** is a type of Identity Provider which is used for Single Sign-on
+
 # AWS CLI & SDK
 
 ## AWS Command Line Interface (CLI)
@@ -973,7 +983,7 @@ The SDK is available for **the following languages**:
 - JavaScript
 - .NET
 - Node.js
-- php
+- PHP
 - Python
 - Ruby
 
@@ -991,3 +1001,24 @@ You will want to store you credentials in your home directory `~/.aws/credential
 The credentials files allow you to manage multiple credentials (called **profiles**).
 
 ![015](./assets/015.jpg)
+
+## AWS CLI & SDK Cheat Sheet
+
+- **CLI** stands for Command Line Interface
+- **SDK** stands for Software Development Kit
+- The **AWS CLI** lets you interact with AWS from anywhere by simply using a command line
+- The **AWS SDK** is a set of API libraries that let you integrate AWS services into your applications
+- **Programmatic Access** must be enabled per user via the IAM console to use CLI or SDK
+- **AWS Configure** command used to setup your AWS Credentials for the CLI
+- The CLI is installed via a Python script
+- Credentials get stored in a plain text file whenever possible use roles instead of AWS credentials
+- The SDK is available for **the following languages**:
+  - C++
+  - Go
+  - Java
+  - JavaScript
+  - .NET
+  - Node.js
+  - PHP
+  - Python
+  - Ruby
