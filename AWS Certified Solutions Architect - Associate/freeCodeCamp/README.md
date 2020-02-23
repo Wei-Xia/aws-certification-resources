@@ -1022,3 +1022,222 @@ The credentials files allow you to manage multiple credentials (called **profile
   - PHP
   - Python
   - Ruby
+
+# AWS Domain Name System (DNS)
+
+## DNS - Introduction
+
+The Phonebook of the Internet.
+
+DNS **translates domain name to IP addresses**, so browsers can find Internet resources.
+
+**Domain Name System (DNS)** is the service which handles **converting** a domain name into a routable **Internet Protocol (IP)** address (ie 52.216.8.34).
+
+This is what allows your computer to **find specific servers** on the internet automatically **depending what domain name** you browser to.
+
+![017](./assets/017.jpg)
+
+## DNS - Internet Protocol (IP)
+
+IP Addresses are what uniquely identifies each computer on a network, and allows communication between them using the Internet Protocol (IP).
+
+### IPv4 - Internet Protocol Version 4
+
+Example: **52.216.8.34**
+
+Address space is **32-bits** with up to **4,294,967,296** available addresses.
+
+### IPv6 - Internet Protocol Version 6
+
+Example: **2001:0db8:85a3:0000:0000:8a2e:0370:7334**
+
+Address space is **128-bits** with up to **340 undecillion potential addresses (1+36 Zeros)**.
+
+Invented to solve available address limitation of IPv4.
+
+## DNS - Domain Registrars
+
+Domain Registrars are authorities who **have the ability to assign domain names** under one or more **top-level-domains**.
+
+Domains get registered through **InterNIC**, which is a service provided by the **Internet Corporation for Assigned Names and Numbers (ICANN)**, and enforces the uniqueness of domain names all over the internet.
+
+After registration, all domain names can be found publicly in a central **WhoIS database**.
+
+## DNS - Top Level Domain
+
+The **last word** within a domain name represents the **top-level domain (TLD)** name.
+
+- apple.**com**
+
+The **second word** within a domain name is known as the **second-level domain (SLD)** name.
+
+- apple.**com**.cn
+
+All available top level domains are stored in a public database at:
+
+```
+https://www.iana.org/domains/root/db
+```
+
+## DNS - Start of Authority (SOA)
+
+Every domain **must have an SOA record**. The SOA is a way for the Domain Admins to provide information about the domain, such as, how often it's updated, what is the administrator's email address and etc.
+
+A **Zone** file can contain only one SOA record.
+
+### Structure of SOA
+
+|  Key Name   |                                                    Description                                                    |
+| :---------: | :---------------------------------------------------------------------------------------------------------------: |
+|  **NAME**   |                                                 name of the zone                                                  |
+|   **IN**    |                                       zone class (usually IN for internet)                                        |
+|   **SOA**   |                                        abbreviation for Start of Authority                                        |
+|  **NNAME**  |                                     Primary master name server for this zone                                      |
+|  **RNAME**  |                                   Email of the admin responsible for this zone                                    |
+| **SERIAL**  |                                            Serial number for this zone                                            |
+| **REFRESH** | **Seconds** after which secondary name servers should query the master for the SOA record, to detect zone changes |
+|  **RETRY**  |          **Seconds** after which secondary NS should retry request serial number if unresponsive master           |
+| **EXPIRE**  |        **Seconds** after which secondary NS should stop answering request for zone if unresponsive master         |
+|   **TTL**   |                                   Time To Live for purposes of negative caching                                   |
+
+## DNS - Address Records
+
+**Address Records (A Records)** are one of the fundamental types of DNS records.
+
+An Address Record allows you to convert the **name of a domain** directly into **an IP address**. They can also be used on the root (naked domain name) itself.
+
+We have `testing-domain.com` (naked domain name) using a A record to directly to a web-server IP address of 52.216.8.34
+
+```JSON
+{
+  "ResourceRecordSets": [{
+    "TTL": 300,
+    "TYPE": "A",
+    "Name": "testing-domain.com",
+    "ResourceRecords": [{
+      "Value": "52.216.8.34"
+    }]
+  }]
+}
+```
+
+## DNS - CNAME Records
+
+**Canonical Name (CNAME)** are another fundamental DNS records used to **resolve one domain name to another, rather than an IP address**.
+
+The advantage of CNAME is they are unlikely to change where IP addresses can change over time (if it's a dynamic IP address).
+
+We have `testing-domain.com` (naked domain name) using an A record to redirect our `www.testing-domain.com`.
+
+```JSON
+{
+  "ResourceRecordSets": [{
+    "TTL": 300,
+    "TYPE": "CNAME",
+    "Name": "testing-domain.com",
+    "ResourceRecords": [{
+      "Value": "www.testing-domain.com"
+    }]
+  }]
+}
+```
+
+## DNS - Name Server Records (NS)
+
+**Name Server Records (NS)** are used by **top-level domain servers** to direct traffic to the DNS server containing the authoritative DNS records. Typically multiple name servers are provided for redundancy.
+
+If you were managing your DNS records with Route53. The **NS Records** for your domain name would be pointing at the AWS servers.
+
+```JSON
+{
+  "Type": "NS",
+  "ResourceRecordSets": [{
+    "Name": "testing-domain.com",
+    "TTL": 172800,
+    "ResourceRecords": [{
+      "Value": "ns-245.awsdns-30.com."
+    }, {
+      "Value": "ns-523.awsdns-01.net."
+    }, {
+      "Value": "ns-1586.awsdns-06.co.uk."
+    }, {
+      "Value": "ns-1373.awsdns-43.org."
+    }]
+  }]
+}
+```
+
+## DNS - Time To Live (TTL)
+
+Time-To-Live (TTL) is the **length of time that a DNS record gets cached** on the resolving server or the users own local machine.
+
+**The lower the TTL, the faster that changes to DNS records** will propagate across the internet.
+
+TTL is always measured in seconds under IPv4.
+
+## DNS - Cheat Sheet
+
+# AWS Route 53
+
+## Route 53 - Introduction
+
+Highly available and scalable cloud Domain Namer System (DNS).
+
+Register and manage domain, create DNS routing rules.
+
+Route 53 is a Domain Name Service (DNS), think Godaddy or NameCheap but with more synergies with AWS services.
+
+You can:
+
+- Register and manage domains
+- Create various records sets on a domain
+- Implement complex traffic flows, eg. Blue/Green deploy, failover
+- Continuously monitor records via health check
+- Resolve VPC's outside of AWS
+
+## Route 53 - Use Case
+
+![018](./assets/018.jpg)
+
+Use Route 53 to get your custom domains to point to your AWS Resource:
+
+1. Incoming internet traffic
+2. Route traffic to our web-app backed by Application Load Balancer
+3. Route traffic to an instance we use to tweak our AMI
+4. Route traffic to API gateway which powers our API
+5. Route traffic to CloudFront which servers our S3 static hosted website
+6. Route traffic to an Elastic IP (EIP) which is a static IP that hosts our company Minecraft server
+
+## Route 53 - Record Sets
+
+We create record sets which allows us to point our naked domain and subdomains via Domain records.
+
+For example, we can send our `www` subdomain using an A record to point a specific IP address.
+
+![019](./assets/019.jpg)
+
+## Route 53 - Alias Record
+
+AWS has their own special **Alias Record** which extends DNS functionality. It will route traffic to specific AWS resources.
+
+Alias records are smart where they can **detect the change of an IP address** and continuously keep that endpoint pointed to the correct resource.
+
+In most cases you wan to be using **Alias** when routing traffic to AWS resource.
+
+![020](./assets/020.jpg)
+
+## Route 53 - Traffic Flow
+
+A visual editor lets you create sophisticated routing configuration for your resources using existing routing types.
+
+## Route 53 - Routing Policies
+
+There are **7 different types** of Routing Policies available inside Route 53.
+
+- **Simple Routing**: default routing policy, multiple addresses result in random selection
+- **Weighted Routing**: route traffic based on weighted values to split traffic
+- **Latency-based Routing**: route traffic to region resource with lowest latency
+- **Failover Routing**: route traffic if primary endpoint is unhealthy to secondary endpoint
+- **Geolocation Routing**: route traffic based on the location of your suers
+- **Geo-proximity Routing**: route traffic based on the location of your resource and, optionally, shift traffic form resources in one location to resources in another
+- **Multi-value Answer Routing**: respond to DNS queries with up to eight healthy records selected at random
