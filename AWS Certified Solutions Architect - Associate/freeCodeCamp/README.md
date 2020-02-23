@@ -898,4 +898,69 @@ User Pool are user directories used to manage the actions for web and mobile app
 
 **Identity Pools** provide **temporary AWS credentials** to access services eg. S3, DynamoDB.
 
-Identity Pools can be thought of as **the actual mechanism authorizing access to the AWS resources**.
+Identity Pools can be thought of as the actual mechanism authorizing access to **the AWS resources**.
+
+## Amazon Cognito Sync
+
+Sync **user data** and **preferences** across devices with one line of code.
+
+Cognito uses **push synchronization** to push updates and synchronize data.
+
+Use **Simple Notification Service (SNS)** to send notifications to all user devices when data in the cloud changes.
+
+## Amazon Cognito Cheat Sheet
+
+# AWS CLI & SDK
+
+## AWS Command Line Interface (CLI)
+
+Control multiple AWS service from the command line and automate them through scripts.
+
+The **AWS CLI** let you interact with AWS from anywhere by simply using a command line.
+
+**You can from the CLI perform actions such as**:
+
+- List buckets, upload data to S3
+- Launch, stop, start and terminate EC2 instance
+- Update security groups, create subnets
+- etc...
+
+**Important AWS CLI flags to know**:
+
+- Easily switch between AWS accounts using `--profile`
+- Change the `--output` between json, table and text
+
+## AWS Software Development Kit (SDK)
+
+**Control** multiple AWS services using popular programming languages.
+
+A Software Development Kit (SDK) is a set of tools and libraries that you can use to create applications for a specific software package.
+
+The AWS SDK is a set of API libraries that let you integrate AWS services into your applications.
+
+The SDK is available for **the following languages**:
+
+- C++
+- Go
+- Java
+- JavaScript
+- .NET
+- Node.js
+- php
+- Python
+- Ruby
+
+## AWS Programmatic Access - Access Key and Secret
+
+When you enable **Programmatic Access** for AWS users:
+
+![014](./assets/014.jpg)
+
+You'll have the ability to create **Access Key ID** and **Secret Access Key**, which are collectively known as **AWS Credentials**.
+![016](./assets/016.jpg)
+
+You will want to store you credentials in your home directory `~/.aws/credentials`.
+
+The credentials files allow you to manage multiple credentials (called **profiles**).
+
+![015](./assets/015.jpg)
