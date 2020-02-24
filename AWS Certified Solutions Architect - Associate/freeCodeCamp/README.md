@@ -1347,3 +1347,45 @@ DNS Resolution for **Hybrid Environment (On-Premise and Cloud)**.
 # AWS Elastic Cloud Computer (EC2)
 
 ## EC2 - Introduction
+
+Elastic Cloud Computer is a Cloud Computing Service, which you can choose your **OS**, **Storage**, **Memory**, **Network Throughput**.
+
+Launch and SSH into your service **within minutes**.
+
+EC2 is a **highly configurable server**.
+
+EC2 is resizable **computer capacity**. It take **minutes** to launch new instances.
+
+Anything and everything on AWS uses EC2 Instance underneath.
+
+## EC2 - Instance Types and Usage
+
+### General Purpose
+
+- **Name**: A1 T3 T3a T2 M5 M5a M4
+- **Description**: Balance of computer, memory and networking resources
+- **Use Cases**: Web server and code repositories
+
+### Compute Optimized
+
+- **Name**: C5 C5n C4
+- **Description**: Ideal for computer bound applications that benefit from high performance processor
+- **Use Cases**: Scientific modeling, dedicated gaming servers and ad server engines
+
+### Memory Optimized
+
+- **Name**: R5 R5a X1e X1 z1d
+- **Description**: Fast performance for workloads that process large data sets in memory
+- **Use Cases**: In-memory caches, In-memory databases, real time big data analytics
+
+### Accelerated Optimized
+
+- **Name**: P3 P2 G3 F1
+- **Description**: Hardware accelerators, or co-processors
+- **Use Cases**: Machine Learning, computational finance, seismic analysis, speech recognition
+
+### Storage Optimized
+
+- **Name**: I3 I3en D2 H1
+- **Description**: High, sequential read and write access to very large data sets on local storage
+- **Use Cases**: NoSQL, in-memory or transactional databases, data warehousing
