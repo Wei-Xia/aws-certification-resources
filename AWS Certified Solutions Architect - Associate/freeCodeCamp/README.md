@@ -1344,6 +1344,19 @@ DNS Resolution for **Hybrid Environment (On-Premise and Cloud)**.
 
 ## Route 53 - Cheat Sheet
 
+- Route 53 is a DNS provider, register and manage domains, create records sets. Think Godadday or NameCheap.
+- **Simple Routing** - Default routing policy, multiple addresses result in a random endpoint selection
+- **Weighted Routing** - Split up traffic based on weighted values to split traffic (percentages)
+- **Latency-based Routing** - Directs traffic based on region, for lowest possible latency for users
+- **Failover Routing** - Primary site in one location, secondary data recovery site in another (change on health check)
+- **Geolocation Routing** - Route traffic based on the geographic location of a request origin.
+- **Geoproximity Routing** - Route traffic based on geographic location using 'Bias' values (need Route 53 Traffic Flow)
+- **Multi-value Answer Routing** - Return multiple values in response to DNS queries (using health check)
+- Traffic Flow - visual editor, for changing routing policies, can version policy records for easy rollback
+- AWS Alias Record - AWS's smart DNS record, detects changed IPs for AWS resources and adjusts automatically
+- Route 53 Resolver - Let you regionally route DNS queries between your VPCs and your network **Hybrid Environments**
+- Health check can be created to monitor and automatically over endpoints. You can have health checks monitor other health checks
+
 # AWS Elastic Cloud Computer (EC2)
 
 ## EC2 - Introduction
@@ -1389,3 +1402,18 @@ Anything and everything on AWS uses EC2 Instance underneath.
 - **Name**: I3 I3en D2 H1
 - **Description**: High, sequential read and write access to very large data sets on local storage
 - **Use Cases**: NoSQL, in-memory or transactional databases, data warehousing
+
+## EC2 - Instance Sizes
+
+EC2 Instance Sizes **generally double** in price and key attributes.
+
+<!-- input -->
+
+|   Name    | vCPU | RAM (GiB) | On-Demand per hour | On-Demand per month |
+| :-------: | :--: | :-------: | :----------------: | :-----------------: |
+| t2.small  |  1   |    12     |      \$0.023       |                     |
+| t2.medium |  2   |    24     |      \$0.0464      |                     |
+| t2.large  |  2   |    36     |                    |                     |
+| t2.xlarge |  4   |    54     |                    |                     |
+
+<!-- output -->
