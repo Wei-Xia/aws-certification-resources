@@ -1177,6 +1177,20 @@ TTL is always measured in seconds under IPv4.
 
 ## DNS - Cheat Sheet
 
+- **Domain Name Service (DNS)**: Internet service that converts domain names into routable IP addresses
+- **IPv4**: Internet Protocol Version 4 with 32 bit address space (**limited** number of addresses)
+- IPv4 Example: **52.216.8.34**
+- **IPv6**: Internet Protocol Version 6 with 128 bit address space (**unlimited** number of addresses)
+- IPv6 Example: **2001:0db8:85a3:0000:0000:8a2e:0370:7334**
+- **Top Level Domain**: example.**com** **last part** of the domain
+- **Second Level Domain**: example.**co**.uk **second last part** of the domain
+- **Domain Registrar**: Third party company who you register domains through
+- **Name Server**: The server(s) which contain the DNS records for a domain
+- **Start of Authority (SOA)**: Contain information about the DNS zone and associated DNS records
+- **A Record**: DNS record which directly converts a domain name into an IP address
+- **CNAME Record**: DNS record which let you convert a domain name into another domain name
+- **Time To Live (TTL)**: The time that a DNS record will be cached for (lower time means changes propagate faster)
+
 # AWS Route 53
 
 ## Route 53 - Introduction
@@ -1239,5 +1253,97 @@ There are **7 different types** of Routing Policies available inside Route 53.
 - **Latency-based Routing**: route traffic to region resource with lowest latency
 - **Failover Routing**: route traffic if primary endpoint is unhealthy to secondary endpoint
 - **Geolocation Routing**: route traffic based on the location of your suers
-- **Geo-proximity Routing**: route traffic based on the location of your resource and, optionally, shift traffic form resources in one location to resources in another
+- **Geoproximity Routing**: route traffic based on the location of your resource and, optionally, shift traffic form resources in one location to resources in another
 - **Multi-value Answer Routing**: respond to DNS queries with up to eight healthy records selected at random
+
+## Route 53 - Simple Routing Polices
+
+**Simple Routing Policies** are the most basic routing policies in Route 53 (**Default Policy**):
+
+- You have 1 record and provide multiple IP address
+- When multiple values are specified for a record, Route 53 will return all values back to the user in a **random order**
+
+![021](./assets/021.jpg)
+
+For example, if you had a record for `www.exampro.co` with 3 different IP address values, users would be directly **randomly to 1 of them** when visiting the domain.
+
+## Route 53 - Weighted Routing Polices
+
+**Weighted Routing Polices** let you split up traffic **based on different weights** assigned.
+
+This allows you to send a certain percentage of overall traffic to one server, and have any other traffic apart from that directed to a completely different server.
+
+![022](./assets/022.jpg)
+
+For example, if you had an ALB running experimental features you could test against a small amount traffic at random to minimize the impact of affect.
+
+## Route 53 - Latency Based Routing Policies
+
+**Latency Based Routing** allows you to direct traffic based on the lowest network latency possible for your end-user **based on region**.
+
+Requires a latency resource record to be set for the EC2 or ELB resource that hosts your application in each region.
+
+![023](./assets/023.jpg)
+
+For example, you have two copies of your web-app backed by ALB. One in California, US and another in Montreal, Canada. An request comes in from Toronto, it will be routed to Montreal since it wil have lower latency.
+
+## Route 53 - Failover Routing Policies
+
+**Failover Routing Policies** allow you to create active/passive setups in situations where you want a primary site in one location, and a secondary data recovery site in another.
+
+Route 53 automatically monitors health-checks from you primary site to determine the health of end-points. If an end-point is determined to be in failed state, all traffic is automatically directed to the secondary location.
+
+![024](./assets/024.jpg)
+
+For example, we have a primary and secondary web-app backed by ALB. Route 53 determines our primary is unhealthy and fails over to secondary ALB.
+
+## Route 53 - Geolocation Routing Policies
+
+**Geolocation Routing Policies** allow you to direct traffic based on the geographic location of where the request originated from.
+
+![025](./assets/025.jpg)
+
+For example, this would let you route all traffic coming from North America to servers located in North American regions, where queries from other region could be directed to servers hosted in that region.
+
+## Route 53 - Geoproximity Routing Policies
+
+**Geoproximity Routing Policies** allow you to direct traffic based on the geographic location of your users, and your AWS resources.
+
+You can route more or less traffic to a specific resource by specifying a **Bias value**.
+
+**Bias value** expands or shrinks the size of the geographic region from which traffic is routed to. **You must use Route 53 Traffic Flow** in order to use geoproximity routing policies.
+
+![026](./assets/026.jpg)
+
+![027](./assets/027.jpg)
+
+## Route 53 - Multi-Value Answer Policies
+
+**Multi-Value Answer Policies** let you configure Route 53 to return multiple values such as IP addresses for your web-servers, in response to DNS queries.
+
+Multiple values can be specified for almost any record. Route 53 automatically performs health checks on resources and only returns values of ones deemed healthy.
+
+![028](./assets/028.jpg)
+
+Similar to Simple Routing, however with an added health check for your record set resources.
+
+## Route 53 - Health Check
+
+- Checks health **every 30 seconds** by default, can be reduced to **every 10 seconds**
+- A health check can **initial a failover** if status is returned unhealthy
+- A **CloudWatch Alarm** can be created to alert you of status unhealthy
+- A health check can **monitor other health checks** to create a chain of reactions
+
+## Route 53 - Resolver
+
+Formally known as `.2 resolver`.
+
+A regional service that lets you route DNS queries between your VPCs and your network.
+
+DNS Resolution for **Hybrid Environment (On-Premise and Cloud)**.
+
+## Route 53 - Cheat Sheet
+
+# AWS Elastic Cloud Computer (EC2)
+
+## EC2 - Introduction
