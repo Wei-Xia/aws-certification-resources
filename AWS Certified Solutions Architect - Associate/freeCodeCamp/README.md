@@ -1407,13 +1407,19 @@ Anything and everything on AWS uses EC2 Instance underneath.
 
 EC2 Instance Sizes **generally double** in price and key attributes.
 
-<!-- input -->
-
 |   Name    | vCPU | RAM (GiB) | On-Demand per hour | On-Demand per month |
 | :-------: | :--: | :-------: | :----------------: | :-----------------: |
-| t2.small  |  1   |    12     |      \$0.023       |                     |
-| t2.medium |  2   |    24     |      \$0.0464      |                     |
-| t2.large  |  2   |    36     |                    |                     |
-| t2.xlarge |  4   |    54     |                    |                     |
+| t2.small  |  1   |    12     |      \$0.023       |       \$16.79       |
+| t2.medium |  2   |    24     |      \$0.0464      |       \$33.87       |
+| t2.large  |  2   |    36     |      \$0.0928      |       \$67.74       |
+| t2.xlarge |  4   |    54     |      \$0.1856      |      \$135.48       |
 
-<!-- output -->
+## EC2 - Instance Profile
+
+Instead of embedding your AWS credentials (Access Key and Secret) in your code so your Instance has permissions to access certain services you can **Attach a role to an instance** via an **Instance Profile**.
+
+You want to **always avoid embedding your AWS credentials** when possible.
+
+![029](./assets/029.jpeg)
+
+An **Instance Profile** holds a reference to a role. The EC2 instance is associated with the Instance Profile. When you select an IAM role when launching an EC2 instance, AWS will automatically create the Instance Profile for you. Instance Profiles are not easily viewed via the AWS Console.
