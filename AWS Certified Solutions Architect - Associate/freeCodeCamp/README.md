@@ -1423,3 +1423,150 @@ You want to **always avoid embedding your AWS credentials** when possible.
 ![029](./assets/029.jpeg)
 
 An **Instance Profile** holds a reference to a role. The EC2 instance is associated with the Instance Profile. When you select an IAM role when launching an EC2 instance, AWS will automatically create the Instance Profile for you. Instance Profiles are not easily viewed via the AWS Console.
+
+## EC2 - Placement Groups
+
+Placement Groups let you to choose **the logical placement** of your instances to optimize for **communication**, **performance**, or **durability**. Placement groups are **free**.
+
+### Cluster
+
+- Pack instances close together inside an AZ
+- Low-latency network performance for tightly-coupled node-to-node communication
+- Well suited for High Performance Computing (HPC) applications
+- Clusters cannot be multi-AZ
+
+![030](./assets/030.jpg)
+
+### Partition
+
+- Spread instances across logical partitions
+- Each partition do not share the underlying hardware with each other (rack per partition)
+- Well suited for large distributed and replicated workloads (Hadoop, Cassandra, Kafka)
+
+![031](./assets/031.jpg)
+
+### Spread
+
+- Each instance is placed on a different rack
+- When critical instances should be keep separated from each other
+- You can spread a max of 7 instances. Spread can be multi-AZ
+
+![032](./assets/032.jpg)
+
+## EC2 - User Data
+
+You can provide an EC2 with **User Data** which is a **script** that will be automatically run when launching an EC2 instance. You could install package, apply updates or anything you like.
+
+![033](./assets/033.jpg)
+
+From within the EC2 instance, if you were to SSH in and CURL this special URL, you can see the **User Data** script.
+
+```
+curl http://169.254.169.254/latest/user-data
+```
+
+## EC2 - MetaData
+
+From within your EC2 instance you can access information about the EC2 via a special url endpoint at `169.254.169.254`.
+
+You would SSH into your EC2 instance and can use the CURL command:
+
+```
+curl http://169.254.169.254/latest/meta-data
+```
+
+![034](./assets/034.jpg)
+
+Combine **metadata** with **user data** scripts to perform all sorts of advanced AWS staging automation.
+
+## EC2 - Pricing Model
+
+### On-Demand
+
+**_Least Commitment_**
+
+- Low cost and flexible
+- Only pay per hour
+- Short-term, spiky, unpredictable workloads,
+- For first time apps
+- Cannot be interrupted
+
+### Reserved Instances
+
+**_Up to 75% off, Best Long-term_**
+
+- Steady state or predictable usage
+- Commit to EC2 over 1 year or 3 year
+- Can resell unused reserved instances
+
+### Spot
+
+**_Up to 90% off, Biggest Savings_**
+
+- Request space computing capacity
+- Flexible start and end times
+- Can handle interruptions (server randomly stopping and starting)
+- For non-critical background jobs
+
+### Dedicate
+
+**_Most Expensive_**
+
+- Dedicated servers
+- Can be on-demand or reserved (up to 70% off)
+- When you need a guarantee of isolate hardware (enterprise requirement)
+
+## EC2 Cheat Sheet
+
+### Introduction Cheat Sheet
+
+- **Elastic Computer Cloud (EC2)** is a Cloud Computing Service
+- Configure your EC2 by choosing your **OS**, **Storage**, **Memory**, **Network Throughput**
+- Launch and SSH into your server **within minutes**
+- EC2 comes in variety Instance Types specialized for different roles:
+  - **General Purpose**: balance of computer, memory and networking resource
+  - **Computer Optimized**: ideal for computer bound applications that benefit from high performance processor
+  - **Memory Optimized**: fast performance for workloads that process large data sets in memory
+  - **Accelerated Optimized**: hardware accelerators, or co-processors
+  - **Storage Optimized**: high, sequential read and write access to very large data sets on local storage
+- Instance Sizes **generally double** in price and key attributes
+- **Placement Groups** let you choose the logical placement of your instances to optimize for communications, performance or durability
+- **Placement groups** are free
+- **User Data** is a script that will be automatically run when launching an EC2 instance
+- **Metadata** is about the current instance which you can access this metadata via a local endpoint when SSH into
+- **Instance Profile** is a container for an IAM role that you can use to pass role information to an EC2 instance when the instance starts
+
+### Pricing Models Cheat Sheet
+
+- EC has 4 pricing models: **On-Demand**, **Spot**, **Reserved Instances(RI)**, and **Dedicated**
+- **On-Demand Instances**: least commitment
+  - Low cost and flexible
+  - Only pay per hour
+  - **Use case**: short-term, spiky, unpredictable workloads, first time apps
+  - Ideal when your workloads cannot be interrupted
+- **Reserved Instances**: up to 75% off, best long-term value
+  - **Use case**: steady state or predictable usage
+  - Can resell unused reserved instances via Reserved Instance Marketplace
+  - Reduced priced is based on **Term** x **Class Offering** x **Payment Option**
+  - **Payment Terms**: 1 year or 3 year
+  - **Payment Options**: All Upfront, Partial Upfront, and No Upfront
+  - **Class Offering**:
+    - **Standard**: Up to 75% reduced pricing comparing to on-demand. Cannot change RI attributes
+    - **Convertible**: Up to 54% reduced pricing compared to on-demand. Allows you to change RI attributes if greater or equal in value
+    - **Scheduled**: You reserve instances for specific time period
+- **Spot Instances**: up to 90% off, biggest savings
+  - Request space computing capacity
+  - Flexible start and end times
+  - **Use case**: Can handle interruptions (server randomly stopping and starting)
+  - **Use case**: For non-critical background jobs
+  - Instance can be terminated by AWS **at anytime**
+  - If your instance is **terminated by AWS**, **you don't get charged** for a partial hour of usage
+  - If **you terminate** an instance, **you will still be charged** for any hour that it ran
+- **Dedicated Instances**: most experience
+  - Dedicated servers
+  - Can be on-demand or reserved (up to 70% off)
+  - **Use case**: When you need a guarantee of isolate hardware (enterprise requirement)
+
+# Amazon Machine Image (AMI)
+
+## AMI - Introduction
