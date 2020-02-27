@@ -1516,7 +1516,68 @@ Combine **metadata** with **user data** scripts to perform all sorts of advanced
 - Can be on-demand or reserved (up to 70% off)
 - When you need a guarantee of isolate hardware (enterprise requirement)
 
-## EC2 Cheat Sheet
+## EC2 - On Demand Instances
+
+**_Least Commitment_**
+
+When you launch an EC2 instance, it's by default using **On-Demand** Pricing.
+
+On-Demand has **no up-front payment** and **no long-term commitment**.
+
+You're changed by the **hour** or by the **minute** (varies based on EC2 instance types).
+
+On-Demand is for applications where the workload is for **short-term**, **spiky** or **unpredictable**. When you have a **new app** for development or you want to run experiment.
+
+## EC2 - Reserved Instances (RI)
+
+**_Best Long-term_**
+
+Designed for applications that have a **steady-state**, **predictable usage**, or require **reserved capacity**.
+
+Reduced Pricing is based on **Term** x **Class Offering** x **Payment Option**.
+
+- **Terms**: You commit to a **1 Year** or **3 Year** contract. The longer the term the greater saving.
+- **Class offering**
+  - **Standard**: Up to **75%** reduced pricing compared to on-demand. Cannot change RI attribute.
+  - **Convertible**: Up to **54%** reduced pricing compared to on-demand. Allows you to change RI attributes if greater or equal in value.
+  - **Scheduled**: You reserve instances for specific time periods eg. once a week for a few hours. Saving vary.
+- **Payment Options**: **All Upfront**, **Partial Upfront**, and **No Upfront**. The greater upfront the greater the savings.
+
+**RIs** can be **shard between multiple accounts** within an org.
+
+**Unused RIs** can be sold in the **Reserved Instance Marketplace**.
+
+## EC2 - Spot Instances
+
+**_Biggest Savings_**
+
+AWS has **unused compute capacity** that they want to maximize the utility of their idle servers.
+
+Spot Instances provide a discount of **90%** compared to On-Demand Pricing.
+
+Spot Instances can be terminated if the computing capacity is needed by on-demand customers.
+
+Termination Conditions:
+
+- Instances can be terminated by AWS **at anytime**
+- If your instance is **terminated by AWS**, **you don't get charged** for a partial hour of usage
+- If **you terminate** an instance, **you will still be charged** for any hour that it ran
+
+## EC2 - Dedicate
+
+**_Most Expensive_**
+
+Designed to meet regulatory requirements. When you have strict **server-bound licensing** that won't support multi-tenancy or cloud deployments.
+
+Offer in both **On-Demand** and **Reserved** (70% off on-demand pricing)
+
+**Enterprise** and **Large Organizations** may have security concerns or obligations about against sharing the same hardware with other AWS customers.
+
+**Multi-Tenant**: When multiple customers are running workloads on the same hardware. **Virtual Isolation** is what separate customers.
+
+**Single-Tenant**: When a single customer has delicates hardware. **Physical Isolation** is what separates customers.
+
+## EC2 - Cheat Sheet
 
 ### Introduction Cheat Sheet
 
@@ -1570,3 +1631,68 @@ Combine **metadata** with **user data** scripts to perform all sorts of advanced
 # Amazon Machine Image (AMI)
 
 ## AMI - Introduction
+
+Amazon Machine Image (**AMI**) provides the information required to launch an instance.
+
+You can **turn your EC2 instances into AMIs** so you can **create copies of your servers**.
+
+AMIs are **Region Specific**.
+
+![035](./assets/035.jpg)
+
+**An AMI holds the following information**:
+
+- A template for the root volume for the instance (EBS Snapshot or Instance Store Template)
+- Launch permissions that control which AWS accounts can use the AMI to launch instances
+- A block device mapping that specifies the volumes to attach to the instance when it's launched
+
+## AMI - Use Cases
+
+1. AMIs help you keep incremental changes to your OS, application code and system packages.
+2. Using **Systems Manager Automation**, you can routinely patch your AMIs with security updates and bake those AMIs.
+3. AMIs are used with **LaunchConfigurations**. When you want to roll out updates to multiple instances, you make a copy of your LaunchConfigurations with new AMI.
+
+## AMI - Marketplace
+
+The AWS Marketplace lets you **purchase subscriptions** to vendor maintained AMIs.
+
+## AMI - Creating an AMI
+
+You can **create an AMI** from an existing EC2 instance that either running or stopped.
+
+## AMI - Choosing an AMI
+
+AWS has hundreds of AMIs you can **search** and select from.
+
+**Community AMI** are free AMIs maintained by the **community**.
+
+**AWS Marketplace** has free or paid AMIs maintained by **vendors**.
+
+Amazon Machine Images can be selected based on:
+
+- Region
+- Operation System
+- Architecture (32-bit or 64-bit)
+- Launch Permissions
+- Root Device Volume
+  - Instance Store (Ephemeral Storage)
+  - EBS Backed Volumes
+
+## AMI - Copying an AMI
+
+AMIs are **region specific**. If you want to use an AMI from another region. You need to **Copy the AMI** and then select the destination region.
+
+![036](./assets/036.jpg)
+
+## AMI - Cheat Sheet
+
+- **Amazon Machine Image (AMI)** provides the information required to launch an instance
+- AMIs are region specific, if you need to use an AMI in another region you can copy an AMI into the destination region via **Copy AMI**
+- You can **create an AMI** from an existing EC2 instance that's either **running** or **stopped**
+- **Community AMI** are free AMIs maintained by the community
+- **AWS Marketplace** has free or paid subscription AMIs maintained by vendors
+- AMIs have an **AMI ID**. The same AMI (eg. Amazon Linux 2) will vary in both AMI ID and options (eg. Architecture options in different regions)
+- **An AMI holds the following information**:
+  - A template for the root volume for the instance (EBS Snapshot or Instance Store Template)
+  - Launch permissions that control which AWS accounts can use the AMI to launch instances
+  - A block device mapping that specifies the volumes to attach to the instance when it's launched
