@@ -1896,3 +1896,159 @@ Launch Configurations **cannot be edited**. When you need to update you Launch C
 - When an Autoscaling launches a new instance, it uses a Launch Configuration which holds the configuration values for that new instance
 - Launch Configuration cannot be edited an must be cloned or a new one created
 - Launch Configuration must be manually updated in by editing the Auto Scaling settings
+
+# AWS Elastic Load Balancer (ELB)
+
+## ELB - Introduction
+
+Distributes incoming application traffic across multiple targets, such as Amazon EC2 instances, containers, IP addresses, and Lambda functions.
+
+Load Balancers can be physical hardware or virtual software that accepts incoming traffic, and then distributes the traffic to multiple targets. They can **balance** the load via different rules. These rules vary based on types of load balancers.
+
+**Elastic Load Balancer (ELB)** is the AWS solution for load balancing traffic, and there are Three types available:
+
+1. **Application Load Balancer (ALB)**: HTTP/HTTPS
+2. **Network Load Balancer (NLB)**: TCP/UDP
+3. **Classic Load Balancer (CLB)**: Legacy
+
+## ELB - Rules of Traffic
+
+**Listeners**: Incoming traffic is evaluated against listeners. Listeners evaluate any traffic that is matched the Listener's port. For Classic Load Balancer, EC2 instances are directly registered to the Load Balancer.
+
+**Rule** (Not available for CLB): Listeners will then invoke rules to decide what to do with the traffic. Generally the next step is to forward traffic to a Target Group.
+
+**Target Group** (Not available for CLB): EC2 instances are registered as targets to a Target Group.
+
+![046](./assets/046.jpg)
+
+For **Application Load Balancer (ALB)** or **Network Load Balancer (NLB)**, traffic is sent to the Listeners. When the port matches, it then checks the rules what to do. The rules will forward the traffic to a Target Group. The target group will evenly distribute the traffic to instances registered to that target group.
+
+![047](./assets/047.jpg)
+
+For **Classic Load Balancer (CLB)**, traffic is sent to the Listeners. When the port matches, it then forwards the traffic to any EC2 instances that are registered to the Classic Load Balancer. CLB does **NOT** allow you to apply rules to listeners.
+
+## ELB - Application Load Balancer (ALB)
+
+![048](./assets/048.jpg)
+
+**Application Load Balancers** are designed to balance **HTTP** and **HTTPS** traffic.
+
+They **operate at Layer 7** (of the [Open Systems Interconnection model](https://en.wikipedia.org/wiki/OSI_model))
+
+ALB has a feature called **Request Routing** which allows you to add routing rules to your listeners based on the HTTP protocol.
+
+Web Application Firewall (WAF) can be attached to ALB.
+
+Great for Web Applications.
+
+## ELB - Network Load Balancer (NLB)
+
+![049](./assets/049.jpg)
+
+**Network Load Balancers** are designed to balance TCP/UDP.
+
+They operate at Layer 4 (of the [Open Systems Interconnection model](https://en.wikipedia.org/wiki/OSI_model))
+
+Can handle **millions of requests per second** while still maintaining extremely low latency.
+
+Can perform Cross-Zone Load Balancing.
+
+Great for Multiplayer Video Games or When network performance is critical.
+
+## ELB - Classic Load Balancer (CLB)
+
+![050](./assets/050.jpg)
+
+It was AWS first load balancer (**legacy**).
+
+Can balance **HTTP**, **HTTPS**, or **TCP** traffic (not at the same time)
+
+It can use **Layer 7-specific features** (of the [Open Systems Interconnection model](https://en.wikipedia.org/wiki/OSI_model)), such as **sticky sessions**.
+
+It can also use **strict Layer 4** (of the [Open Systems Interconnection model](https://en.wikipedia.org/wiki/OSI_model)) balancing for purely TCP applications.
+
+Can perform Cross-Zone Load Balancing.
+
+**Not recommend for use**, instead use NLB or ALB.
+
+## ELB - Sticky Sessions
+
+![051](./assets/051.jpg)
+
+Sticky Sessions is an advanced load balancing method that allows you to **bind a user's session to a specific EC2 instance**.
+
+Ensure all **requests** from that session are **sent to the same instance**.
+
+Typically **utilized** with a **Classic Load Balancer**.
+
+**Can be enabled for ALB** though can only be set on a Target Group not individual EC2 instances.
+
+Cookie are used to remember which EC2 instance.
+
+Useful when specific **information is only stored locally on a single instance**.
+
+## ELB - X-Forwarded-For Header
+
+![052](./assets/052.jpg)
+
+If you **need the IPv4 address** of a user, check the **X-Forwarded-For** header.
+
+The **X-Forwarded-For (XFF)** header is a command method for identifying the **originating IP address** of a client connecting to a web server through an HTTP proxy or a load balancer.
+
+## ELB - Health Checks
+
+![053](./assets/053.jpg)
+
+Instances that are monitored by the Elastic Load Balancer (ELB) report back Health Checks as **InService**, **OutofService**.
+
+Health Checks communicates directly with the instance to determine its states.
+
+ELB **does NOT terminate unhealthy instance**. It will just redirect traffic to healthy instances.
+
+## ELB - Cross-Zone Load Balancing
+
+Only for Classic and Network Load Balancer.
+
+### Cross-Zone Load Balancing Enabled
+
+![054](./assets/054.jpg)
+
+⤴️ Requests are distributed evenly across the instances **in all enabled** Availability Zones.
+
+### Cross-Zone Load Balancing Disabled
+
+![055](./assets/055.jpg)
+
+⤴️ Requests are distributed evenly across the instance **in ONLY** its Availability Zones.
+
+## ELB - Request Routing
+
+Apply rules to incoming request and then forward or redirect traffic.
+
+Rules include:
+
+- Host Header
+- HTTP Header
+- HTTP Header Method
+- Source IP
+- Path
+- Query String
+
+![056](./assets/056.jpg)
+
+## ELB - Cheat Sheet
+
+- There are three Elastic Load Balancers: **Application**, **Network**, and **Classic** Load Balancer
+- A Elastic Load Balancer must have **at least two** Availability Zone
+- Elastic Load Balancer **cannot go cross-region**. You must create one per region
+- ALB has **Listeners**, **Rules** and **Target Groups** to route traffic
+- NLB use **Listeners** and **Target Groups** to route traffic
+- CLB use **Listeners**, and EC2 instances are **directly registered** as targets to CLB
+- Application Load Balancer is for HTTP(S) traffic and the name implies it's good for Web Applications
+- Network Load Balancer is for TCP/UDP, it's good for high network throughput
+- Classic Load Balancer is legacy, and it's recommended to use ALB or NLB instead
+- Use X-Forwarded-For (XFF) to get original IP of incoming traffic passing through ELB
+- You can attach Web Application Firewall (WAF) to ALB, but not to NLB or CLB
+- You can attach Amazon Certification Manager SSL to any of the Elastic Load Balancers for SSL
+- ALB has advanced Request Routing rules where you can route based on subdomain header, path and other HTTP(S) information
+- Sticky Sessions can be enabled for CLB or ALB, and sessions are remembered via Cookie
