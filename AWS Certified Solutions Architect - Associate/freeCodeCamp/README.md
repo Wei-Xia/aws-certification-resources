@@ -90,6 +90,88 @@
   - [AWS Command Line Interface (CLI)](#aws-command-line-interface--cli-)
   - [AWS Software Development Kit (SDK)](#aws-software-development-kit--sdk-)
   - [AWS Programmatic Access - Access Key and Secret](#aws-programmatic-access---access-key-and-secret)
+  - [AWS CLI & SDK Cheat Sheet](#aws-cli---sdk-cheat-sheet)
+- [AWS Domain Name System (DNS)](#aws-domain-name-system--dns-)
+  - [DNS - Introduction](#dns---introduction)
+  - [DNS - Internet Protocol (IP)](#dns---internet-protocol--ip-)
+    - [IPv4 - Internet Protocol Version 4](#ipv4---internet-protocol-version-4)
+    - [IPv6 - Internet Protocol Version 6](#ipv6---internet-protocol-version-6)
+  - [DNS - Domain Registrars](#dns---domain-registrars)
+  - [DNS - Top Level Domain](#dns---top-level-domain)
+  - [DNS - Start of Authority (SOA)](#dns---start-of-authority--soa-)
+    - [Structure of SOA](#structure-of-soa)
+  - [DNS - Address Records](#dns---address-records)
+  - [DNS - CNAME Records](#dns---cname-records)
+  - [DNS - Name Server Records (NS)](#dns---name-server-records--ns-)
+  - [DNS - Time To Live (TTL)](#dns---time-to-live--ttl-)
+  - [DNS - Cheat Sheet](#dns---cheat-sheet)
+- [AWS Route 53](#aws-route-53)
+  - [Route 53 - Introduction](#route-53---introduction)
+  - [Route 53 - Use Case](#route-53---use-case)
+  - [Route 53 - Record Sets](#route-53---record-sets)
+  - [Route 53 - Alias Record](#route-53---alias-record)
+  - [Route 53 - Traffic Flow](#route-53---traffic-flow)
+  - [Route 53 - Routing Policies](#route-53---routing-policies)
+  - [Route 53 - Simple Routing Polices](#route-53---simple-routing-polices)
+  - [Route 53 - Weighted Routing Polices](#route-53---weighted-routing-polices)
+  - [Route 53 - Latency Based Routing Policies](#route-53---latency-based-routing-policies)
+  - [Route 53 - Failover Routing Policies](#route-53---failover-routing-policies)
+  - [Route 53 - Geolocation Routing Policies](#route-53---geolocation-routing-policies)
+  - [Route 53 - Geoproximity Routing Policies](#route-53---geoproximity-routing-policies)
+  - [Route 53 - Multi-Value Answer Policies](#route-53---multi-value-answer-policies)
+  - [Route 53 - Health Check](#route-53---health-check)
+  - [Route 53 - Resolver](#route-53---resolver)
+  - [Route 53 - Cheat Sheet](#route-53---cheat-sheet)
+- [AWS Elastic Cloud Computer (EC2)](#aws-elastic-cloud-computer--ec2-)
+  - [EC2 - Introduction](#ec2---introduction)
+  - [EC2 - Instance Types and Usage](#ec2---instance-types-and-usage)
+    - [General Purpose](#general-purpose)
+    - [Compute Optimized](#compute-optimized)
+    - [Memory Optimized](#memory-optimized)
+    - [Accelerated Optimized](#accelerated-optimized)
+    - [Storage Optimized](#storage-optimized)
+  - [EC2 - Instance Sizes](#ec2---instance-sizes)
+  - [EC2 - Instance Profile](#ec2---instance-profile)
+  - [EC2 - Placement Groups](#ec2---placement-groups)
+    - [Cluster](#cluster)
+    - [Partition](#partition)
+    - [Spread](#spread)
+  - [EC2 - User Data](#ec2---user-data)
+  - [EC2 - MetaData](#ec2---metadata)
+  - [EC2 - Pricing Model](#ec2---pricing-model)
+    - [On-Demand](#on-demand)
+    - [Reserved Instances](#reserved-instances)
+    - [Spot](#spot)
+    - [Dedicate](#dedicate)
+  - [EC2 - On Demand Instances](#ec2---on-demand-instances)
+  - [EC2 - Reserved Instances (RI)](#ec2---reserved-instances--ri-)
+  - [EC2 - Spot Instances](#ec2---spot-instances)
+  - [EC2 - Dedicate](#ec2---dedicate)
+  - [EC2 - Cheat Sheet](#ec2---cheat-sheet)
+    - [Introduction Cheat Sheet](#introduction-cheat-sheet)
+    - [Pricing Models Cheat Sheet](#pricing-models-cheat-sheet)
+- [Amazon Machine Image (AMI)](#amazon-machine-image--ami-)
+  - [AMI - Introduction](#ami---introduction)
+  - [AMI - Use Cases](#ami---use-cases)
+  - [AMI - Marketplace](#ami---marketplace)
+  - [AMI - Creating an AMI](#ami---creating-an-ami)
+  - [AMI - Choosing an AMI](#ami---choosing-an-ami)
+  - [AMI - Copying an AMI](#ami---copying-an-ami)
+  - [AMI - Cheat Sheet](#ami---cheat-sheet)
+- [AWS Auto Scaling Groups (ASG)](#aws-auto-scaling-groups--asg-)
+  - [ASG Introduction](#asg-introduction)
+  - [ASG - Capacity Settings](#asg---capacity-settings)
+  - [ASG - Health Check Replacements](#asg---health-check-replacements)
+    - [EC2 Health Check Type](#ec2-health-check-type)
+    - [ELB Health Check](#elb-health-check)
+  - [ASG - Scaling Policies](#asg---scaling-policies)
+    - [Target Tracking Scaling Policy](#target-tracking-scaling-policy)
+    - [Simple Scaling Policy (legacy)](#simple-scaling-policy--legacy-)
+    - [Simple Policies with Steps](#simple-policies-with-steps)
+  - [ASG - ELB Integration](#asg---elb-integration)
+  - [ASG - Use Case](#asg---use-case)
+  - [ASG - Launch Configuration](#asg---launch-configuration)
+  - [ASG - Cheat Sheet](#asg---cheat-sheet)
 
 ---
 
@@ -1696,3 +1778,121 @@ AMIs are **region specific**. If you want to use an AMI from another region. You
   - A template for the root volume for the instance (EBS Snapshot or Instance Store Template)
   - Launch permissions that control which AWS accounts can use the AMI to launch instances
   - A block device mapping that specifies the volumes to attach to the instance when it's launched
+
+# AWS Auto Scaling Groups (ASG)
+
+## ASG Introduction
+
+Set scaling rules which will automatically launch additional EC2 instance or shutdown instances to meet current demand.
+
+![037](./assets/037.jpg)
+
+Auto Scaling Group (**ASG**) contains a collection of EC2 instances that are treated as a group for the purpose of automatic Scaling and management.
+
+Automatic scaling can occur via:
+
+1. **Capacity Settings**
+2. **Health Check Replacements**
+3. **Scaling Policies**
+
+## ASG - Capacity Settings
+
+![038](./assets/038.jpg)
+
+The size of an Auto Scaling Group is based on **Min**, **Max** and **Desired Capacity**.
+
+**Min** is how many EC2 instances should at least be running.
+
+**Max** is number EC2 instances allowed to be running.
+
+**Desired Capacity** is how many EC2 instances you want to ideally run.
+
+ASG will always launch instances to meet minimum capacity.
+
+## ASG - Health Check Replacements
+
+### EC2 Health Check Type
+
+![039](./assets/039.jpg)
+
+ASG will perform a health check on EC2 instances to determine if there is a software or hardware issue. This is based on the **EC2 Status Checks**.
+
+If an instance is considered unhealthy. ASG will terminate and launch a new instance.
+
+### ELB Health Check
+
+![040](./assets/040.jpg)
+
+ASG will perform a health check based on the ELB health check.
+
+ELB can perform health checks by pinging an HTTP(S) endpoint with an expected response. If ELB determines a instance is unhealthy it forwards this inform action to ASG which will terminate the unhealthy instance.
+
+## ASG - Scaling Policies
+
+**Scaling Out**: **Adding** More Instances
+**Scaling In**: **Removing** Instances
+
+### Target Tracking Scaling Policy
+
+![041](./assets/041.jpg)
+
+Maintains a specific metrics at a target value.
+
+eg. If **Average CPU Utilization** exceeds 75% then add another server.
+
+### Simple Scaling Policy (legacy)
+
+![042](./assets/042.jpg)
+
+Scales when an **alarm is breached**.
+
+### Simple Policies with Steps
+
+![043](./assets/043.jpg)
+
+Scales when an **alarm is breached**, can **escalate based on alarm** value changing.
+
+## ASG - ELB Integration
+
+ASG can be associated with Elastic Load Balancers (ELB). When ASG is associated with ELB richer health checks can be set.
+
+![044](./assets/044.jpg)
+
+**Application and Network Load Balancers** are associated **indirectly** via their Target Groups.
+
+## ASG - Use Case
+
+![045](./assets/045.jpg)
+
+1. Burst of traffic from the internet hits our domain.
+2. Route 53 points that traffic to our load balancer.
+3. Our load balancer passes the traffic to hit target group.
+4. The target group is associated with our ASG and sends the traffic to instances registered with our ASG.
+5. The ASG Scaling Policy will check if our instances are near capacity.
+6. The Scaling Policy determines we need another instance, and it launched an new EC2 instance with the associated Launch Configuration to our ASG.
+
+## ASG - Launch Configuration
+
+A Launch Configuration is an instance configuration template that an Auto Scaling Group uses to launch EC2 instances.
+
+A Launch Configuration is the same process as Launch an EC2 instance except you are saving that configuration to Launch an Instance for later.
+
+Launch Configurations **cannot be edited**. When you need to update you Launch Configuration, you **create** a new one or **clone** the existing configuration and then manually associate that new Launch Configuration.
+
+## ASG - Cheat Sheet
+
+- An ASG is a collection of EC2 instances grouped for scaling and management
+- Scaling Out is when add servers
+- Scaling In is when you remove servers
+- Scaling Up is when you increase the size of an instance (eg. updating Launch Configuration with larger size)
+- Size of an ASG is baed on a **Min**, **Max**, and **Desired Capacity**
+- **Target Scaling Policy** scales based on when a target value for a metrics is breached (eg. Average CPU Utilization exceed 75%)
+- **Simple Scaling Policy** triggers a scaling when an alarm is breached
+- **Scaling Policy with Steps** is the new version of Simple Scaling Policy and allows you to create steps based on alarm value
+- Desired Capacity is how many EC2 instances you want to ideally run
+- An ASG will always launch instances to meet minimum capacity
+- Health checks determine the current state of an instance in the ASG
+- Health checks can be run against either an ELB or the EC2 instances
+- When an Autoscaling launches a new instance, it uses a Launch Configuration which holds the configuration values for that new instance
+- Launch Configuration cannot be edited an must be cloned or a new one created
+- Launch Configuration must be manually updated in by editing the Auto Scaling settings
